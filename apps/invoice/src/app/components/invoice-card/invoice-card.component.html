@@ -1,0 +1,10 @@
+<div class="outsideWrapper" *ngFor="let invoice of invoices">
+    <div class="wrapper">
+    <div class="hashtag">#<div class="code">{{ invoice.code }}</div></div>
+    <div class="date">{{ invoice.date }}</div>
+    <div class="amount">{{ invoice.amount }}</div>
+    <div class="client">{{ invoice.client }}</div>
+    <div class="statusDot">•<div class="status">{{ invoice.status }}</div></div>
+</div>
+</div>
+

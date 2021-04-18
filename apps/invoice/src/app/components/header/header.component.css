@@ -1,0 +1,61 @@
+.wrapper {
+    background-color: hsl(232, 19%, 15%);
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 100%;
+    width: 80px;
+    background-color: #7c40ff;
+    border-radius: 0 30% 30% 0;
+    overflow: hidden;
+}
+.logoIcon{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    z-index: 100;
+    color: white;
+}
+.insideLogo {
+    height: 100%;
+    position: relative;
+    top: 50%;
+    border-radius: 40% 0 0 0;
+    background-color: #9b6dff;
+}
+
+.toggleAndUser {
+    display: flex;
+}
+
+.toggleTheme {
+    height: 25px;
+    width: 25px;
+    color: hsl(228, 34%, 66%);
+    fill: hsl(228, 34%, 66%);
+    margin: auto 20px;
+}
+
+.userImageWrapper {
+    height: 100%;
+    width: 90px;
+    border-left: solid 1px hsl(228, 34%, 66%); /* also use this color for toggle icon*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userImage {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-image: url('apps/invoice/src/assets/Remi.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

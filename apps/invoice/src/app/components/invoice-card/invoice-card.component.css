@@ -1,0 +1,60 @@
+.wrapper {
+    height: 130px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.hashtag {
+    color: gray; /*Needs to be toggle icon color in dark theme*/
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    margin-bottom: 23px;
+}
+.code {
+    color: black;
+    font-size: 16px;
+}
+
+.date {
+    color: gray;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.amount {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.client {
+    color: gray;
+    font-size: 15px;
+    margin-bottom: 31px;
+}
+
+.statusDot {
+    height: 40px;
+    width: 110px;
+    border-radius: 3px;
+    background-color: #feecda;
+    color: #fc9c39;
+    font-size: 29px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+}
+
+.status {
+    margin-left: 5px;
+    font-size: 15px;
+}
