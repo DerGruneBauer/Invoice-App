@@ -1,96 +1,102 @@
 .wrapper {
-    height: 130px;
-    padding: 20px;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-between;
+  height: 130px;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 
 .hashtag {
-    color: gray; /*Needs to be toggle icon color in dark theme*/
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    margin-bottom: 23px;
+  color: gray; /*Needs to be toggle icon color in dark theme*/
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 23px;
 }
 .code {
-    color: black;
-    font-size: 16px;
+  color: black;
+  font-size: 16px;
 }
 
 .date {
-    color: gray;
-    font-size: 15px;
-    margin-bottom: 5px;
+  color: gray;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .amount {
-    color: black;
-    font-weight: bold;
-    font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .client {
-    color: gray;
-    font-size: 15px;
-    margin-bottom: 31px;
+  color: gray;
+  font-size: 15px;
+  margin-bottom: 31px;
 }
 
 .statusDot {
-    height: 40px;
-    width: 110px;
-    border-radius: 3px;
-    font-size: 29px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-end;
+  height: 40px;
+  width: 110px;
+  border-radius: 3px;
+  font-size: 29px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
 }
 
 .status {
-    margin-left: 5px;
-    font-size: 15px;
+  margin-left: 5px;
+  font-size: 15px;
 }
 .statusPaid {
-    background: rgba(218, 254, 220, .5);
-    color: #2ac237;
+  background: rgba(218, 254, 220, 0.5);
+  color: #2ac237;
 }
 .statusPending {
-    background: rgba(254, 236, 218, .5);
-    color: #fc9c39;
+  background: rgba(254, 236, 218, 0.5);
+  color: #fc9c39;
 }
 .statusDraft {
-    background: rgba(233, 232, 232, .5);
-    color: gray;
+  background: rgba(233, 232, 232, 0.5);
+  color: gray;
 }
 
 @media only screen and (min-width: 768px) {
-    .wrapper {
-        height: 80px;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
+  .wrapper {
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .client, .status, .date, .hashtag {
-        margin: 0;
-    }
-    
-    .wrapper svg {
-        height: 15px;
-        width: 15px;
-        margin-left: -15px;
-    }
-    
+  .client,
+  .status,
+  .date,
+  .hashtag {
+    margin: 0;
+  }
+
+  .wrapper svg {
+    height: 15px;
+    width: 15px;
+    margin-left: -15px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .wrapper svg {
-        margin-left: -45px;
-    }
+  .wrapper:hover {
+      cursor: pointer;
+      box-shadow: 0px 6px 24px -7px rgba(48,47,48,0.1);
+  }
+  .wrapper svg {
+    margin-left: -45px;
+  }
 }

@@ -1,4 +1,4 @@
-<div class="outsideWrapper" *ngFor="let invoice of invoices">
+<div class="outsideWrapper" routerLink="/individualInvoice" *ngFor="let invoice of invoices; let i = index" (click)="setInvoiceDetails(invoice)">
 <div class="wrapper">
     <div class="hashtag">#<div class="code">{{ invoice.code }}</div></div>
     <div class="date">{{ invoice.date }}</div>

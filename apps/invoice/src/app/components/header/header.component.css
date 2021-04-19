@@ -1,100 +1,102 @@
 .wrapper {
-    background-color: hsl(232, 19%, 15%);
-    width: 100vw;
-    height: 10vh;
-    display: flex;
-    justify-content: space-between;
+  background-color: hsl(232, 19%, 15%);
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
-    height: 100%;
-    width: 80px;
-    background-color: #7c40ff;
-    border-radius: 0 30% 30% 0;
-    overflow: hidden;
+  height: 100%;
+  width: 80px;
+  background-color: #7c40ff;
+  border-radius: 0 30% 30% 0;
+  overflow: hidden;
 }
-.logoIcon{
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 2%;
-    left: 5%;
-    z-index: 100;
-    color: white;
+.logoIcon {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  z-index: 100;
+  color: white;
 }
 .insideLogo {
-    height: 100%;
-    position: relative;
-    top: 50%;
-    border-radius: 40% 0 0 0;
-    background-color: #9b6dff;
+  height: 100%;
+  position: relative;
+  top: 50%;
+  border-radius: 40% 0 0 0;
+  background-color: #9b6dff;
 }
 
 .toggleAndUser {
-    display: flex;
+  display: flex;
 }
 
 .toggleTheme {
-    height: 25px;
-    width: 25px;
-    color: hsl(228, 34%, 66%);
-    fill: hsl(228, 34%, 66%);
-    margin: auto 20px;
+  height: 25px;
+  width: 25px;
+  color: hsl(228, 34%, 66%);
+  fill: hsl(228, 34%, 66%);
+  margin: auto 20px;
 }
 
 .userImageWrapper {
-    height: 100%;
-    width: 90px;
-    border-left: solid 1px hsl(228, 34%, 66%); /* also use this color for toggle icon*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100%;
+  width: 90px;
+  border-left: solid 1px hsl(228, 34%, 66%); /* also use this color for toggle icon*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .userImage {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-image: url('apps/invoice/src/assets/Remi.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-image: url('apps/invoice/src/assets/Remi.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @media only screen and (min-width: 1440px) {
+  .wrapper {
+    width: 7vw;
+    height: 100vh;
+    border-radius: 0 40px 40px 0;
+    flex-direction: column;
+  }
 
-    .wrapper {
-        width: 8vw;
-        height: 100vh;
-        border-radius: 0 40px 40px 0;
-        flex-direction: column;
-    }
+  .logo {
+    height: 15%;
+    width: 100%;
+  }
 
-    .logo {
-        height: 15%;
-        width: 100%;
-    }
-
-    
-.toggleAndUser {
+  .toggleAndUser {
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.toggleTheme {
+  .toggleTheme {
     height: 35px;
     width: 35px;
     margin-bottom: 20px;
-}
+  }
+  .toggleTheme:hover {
+    cursor: pointer;
+    color: hsl(228, 56%, 76%);
+    fill: hsl(228, 56%, 76%);
+  }
 
-.userImageWrapper {
+  .userImageWrapper {
     height: 100px;
     width: 100%;
     border-top: solid 1px hsl(228, 34%, 66%); /* also use this color for toggle icon*/
-}
-.userImage {
+    border-left: none;
+  }
+  .userImage {
     height: 50px;
     width: 50px;
-}
-
-
+  }
 }

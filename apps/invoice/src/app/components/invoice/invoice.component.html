@@ -1,1 +1,113 @@
-<p>invoice works!</p>
+<div class="wrapper">
+  <div class="backButton" routerLink="/Dashboard">
+    <div class="svgDiv"><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"
+      />
+    </svg>
+</div>
+    Go Back
+  </div>
+
+  <div class="invoiceStatus">
+      <div class="totalStatus">
+    <div class="statusTitle">Status</div>
+    <div
+      class="statusDot"
+      [ngClass]="{
+        statusDraft: invoiceDetails[0].status == 'Draft',
+        statusPaid: invoiceDetails[0].status == 'Paid',
+        statusPending: invoiceDetails[0].status == 'Pending'
+      }"
+    >
+      •
+      <div class="status">{{ invoiceDetails[0].status }}</div>
+    </div>
+</div>
+    <div class="buttons" *ngIf="screenWidth >= 768">
+        <div class="editButton">Edit</div>
+        <div class="deleteButton">Delete</div>
+        <div class="statusChangeButton">Mark As Paid</div>
+    </div>
+  </div>
+
+  <div class="invoiceInfo">
+    <div class="firstInfoBox">
+        <div>
+      <div class="invoiceCode title">
+        #<span class="code bold">{{ invoiceDetails[0].code }}</span>
+      </div>
+      <div class="projectDescription title">
+        {{ invoiceDetails[0].projectDescription }}
+      </div>
+    </div>
+      <div class="address title">
+        {{ invoiceDetails[0].stAddress }}<br />
+        {{ invoiceDetails[0].city }}<br />
+        {{ invoiceDetails[0].postCode }}<br />
+        {{ invoiceDetails[0].country }}<br />
+      </div>
+    </div>
+    <div class="clientInfo">
+    <div class="secondInfoBox">
+      <div class="invoiceDate title">
+        Invoice Date<br />
+        <div class="iDate bold">{{ invoiceDetails[0].date }}</div>
+      </div>
+      <div class="paymentDate title">
+        Payment Date<br />
+        <div class="pDate bold">{{
+          invoiceDetails[0].paymentDate
+        }}</div>
+      </div>
+      <div class="billTo title">
+        Bill To<br />
+        <div class="clientName bold" >{{
+          invoiceDetails[0].client
+        }}</div
+        >
+        <div class="clientAddress">
+        {{ invoiceDetails[0].clientStAddress }}<br />
+        {{ invoiceDetails[0].clientCity }}<br />
+        {{ invoiceDetails[0].clientPostCode }}<br />
+        {{ invoiceDetails[0].clientCountry }}<br />
+    </div>
+      </div>
+    </div>
+    <div class="sendTo title">
+      Send To<br />
+      <div class="clientEmail bold">{{
+        invoiceDetails[0].clientEmail
+      }}</div>
+    </div>
+</div>
+    <div class="itemDetails">
+        <div class="items" *ngFor="let item of invoiceDetails[0].itemList; let i = index;">
+            <div>
+                <div class="itemName">{{ invoiceDetails[0].itemList[i].itemName }}</div>
+                <div class="itemQty">{{ invoiceDetails[0].itemList[i].quantity }} x ${{ invoiceDetails[0].itemList[i].price }}</div>
+            </div>
+            <div class="subTotal">${{ (invoiceDetails[0].itemList[i].quantity * invoiceDetails[0].itemList[i].price).toFixed(2) }}</div>
+        </div>
+    </div>
+    <div class="grandTotal">
+        <div class="totalTitle">Grand Total</div>
+        <div class="totalPrice">$ 1,236.09</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer" *ngIf="screenWidth < 768">
+    <div class="editButton">Edit</div>
+    <div class="deleteButton">Delete</div>
+    <div class="statusChangeButton">Mark As Paid</div>
+  </div>
