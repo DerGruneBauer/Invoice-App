@@ -44,8 +44,6 @@
     height: 40px;
     width: 110px;
     border-radius: 3px;
-    background-color: #feecda;
-    color: #fc9c39;
     font-size: 29px;
     font-weight: bold;
     display: flex;
@@ -57,4 +55,42 @@
 .status {
     margin-left: 5px;
     font-size: 15px;
+}
+.statusPaid {
+    background: rgba(218, 254, 220, .5);
+    color: #2ac237;
+}
+.statusPending {
+    background: rgba(254, 236, 218, .5);
+    color: #fc9c39;
+}
+.statusDraft {
+    background: rgba(233, 232, 232, .5);
+    color: gray;
+}
+
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        height: 80px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .client, .status, .date, .hashtag {
+        margin: 0;
+    }
+    
+    .wrapper svg {
+        height: 15px;
+        width: 15px;
+        margin-left: -15px;
+    }
+    
+}
+
+@media only screen and (min-width: 1440px) {
+    .wrapper svg {
+        margin-left: -45px;
+    }
 }

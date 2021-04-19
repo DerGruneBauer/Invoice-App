@@ -59,3 +59,42 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+@media only screen and (min-width: 1440px) {
+
+    .wrapper {
+        width: 8vw;
+        height: 100vh;
+        border-radius: 0 40px 40px 0;
+        flex-direction: column;
+    }
+
+    .logo {
+        height: 15%;
+        width: 100%;
+    }
+
+    
+.toggleAndUser {
+    flex-direction: column;
+    align-items: center;
+}
+
+.toggleTheme {
+    height: 35px;
+    width: 35px;
+    margin-bottom: 20px;
+}
+
+.userImageWrapper {
+    height: 100px;
+    width: 100%;
+    border-top: solid 1px hsl(228, 34%, 66%); /* also use this color for toggle icon*/
+}
+.userImage {
+    height: 50px;
+    width: 50px;
+}
+
+
+}

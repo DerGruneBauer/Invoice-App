@@ -1,10 +1,15 @@
 <div class="outsideWrapper" *ngFor="let invoice of invoices">
-    <div class="wrapper">
+<div class="wrapper">
     <div class="hashtag">#<div class="code">{{ invoice.code }}</div></div>
     <div class="date">{{ invoice.date }}</div>
     <div class="amount">{{ invoice.amount }}</div>
     <div class="client">{{ invoice.client }}</div>
-    <div class="statusDot">•<div class="status">{{ invoice.status }}</div></div>
+    <div class="statusDot" 
+    [ngClass]="{'statusDraft' : invoice.status == 'Draft', 'statusPaid' : invoice.status == 'Paid', 'statusPending' : invoice.status == 'Pending'}"
+    >•<div class="status">{{ invoice.status }}</div></div>
+    <svg *ngIf="screenWidth >= 768" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
 </div>
 </div>
 
