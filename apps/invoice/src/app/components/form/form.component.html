@@ -1,0 +1,118 @@
+<form #invoiceForm = "ngForm">
+
+    <div class="billFromTitle">Bill From</div>
+    <div class="billFromSection">
+    <div class="stAddress title">Street Address <br>
+    <input type="text"
+        class="stAddress"
+        name="stAddress"/></div>
+
+    <div class="postAndCity">
+    <div class="city title">City <br>
+    <input type="text"
+        class=""
+        name="city"/></div>
+
+    <div class="postCode title">Post Code<br>
+    <input type="text"
+        class=""
+        name="postCode"/></div>
+    </div>
+
+    <div class="country title">Country <br>
+    <input type="text"
+        class="country"
+        name="country"/></div>
+    </div>
+
+    <div class="billToTitle">Bill To</div>
+    <div class="billToSection">
+    <div class="clientName title">Client's Name <br>
+    <input type="text"
+        class="clientName"
+        name="clientName"/></div>
+    
+    <div class="clientEmail title">Client's Email <br>
+    <input type="text"
+        class="clientEmail"
+        name="clientEmail"/></div>
+
+    <div class="stAddress title">Street Address <br>
+    <input type="text"
+        class="clientStAddress"
+        name="clientStAddress"/></div>
+    
+    <div class="postAndCity">
+    <div class="clientCity title">City <br>
+    <input type="text"
+        class="clientCity"
+        name="clientCity"/></div>
+
+    <div class="clientPostCode title">Post Code <br>
+    <input type="text"
+        class="clientPostCode"
+        name="clientPostCode"/></div>
+    </div>
+    
+    <div class="clientCountry title">Country <br>
+    <input type="text"
+        class="clientCountry"
+        name="clientCountry"/></div>
+    </div>
+
+    <div class="descriptionSection">
+    <div class="date title">Invoice Date<br>
+    <input type="date"
+        class="date"
+        name="date"/></div>
+    
+    <div class="paymentTerms title">Payment Terms <br>
+    <select
+        class="paymentTerms"
+        >
+        <option value="30days">30 Days</option>
+        <option value="60days">60 Days</option>
+        <option value="90days">90 Days</option>
+    </select></div>
+    
+    <div class="projectDescription title">Project Description<br>
+    <input type="text"
+        class="projectDescription"
+        name="projectDescription"/>
+    </div></div>
+
+
+<div class="itemListTitle">Item List</div>
+<table>
+    <tr>
+        <th class="title">Item Name</th>
+        <th class="title">Qty</th>
+        <th class="title">Price</th>
+    </tr>
+    <tr *ngFor="let item of items; let i=index">
+        <td>
+            <input type="text"
+                class="itemName"
+                name="itemName"/>
+        </td>
+        <td>
+            <input type="number"
+                class="quantity"
+                name="quantity"/>
+        </td>
+        <td>
+            <input type="number"
+                class="price"
+                name="price"/>
+        </td>
+        <td class="subTotal">
+            <div class="subTotal">{{ quantity[i] * price[i] }}</div>
+        </td>
+        <svg (click)="removeNewItem(i)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 deleteNewItem" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg> 
+    </tr>
+</table>
+
+<div class="addItem" (click)="addNewItem()">+ Add New Item</div>
+</form>

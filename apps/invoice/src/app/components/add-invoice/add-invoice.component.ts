@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'der-grune-bauer-add-invoice',

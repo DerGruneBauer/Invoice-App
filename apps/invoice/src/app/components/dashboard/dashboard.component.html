@@ -7,26 +7,19 @@
         </div>
         <div class="filterAndNew">
             <select class="filter">
-                <option>Filter</option>
-                <!-- <option>Filter By Status</option> -->
+                <option>Filter By...</option>
                 <option value="statusPaid">Status - Paid</option>
                 <option value="statusPending">Status - Pending</option>
                 <option value="statusDraft">Status - Draft</option>
-                <!-- <option>Filter By Amount</option> -->
-                <option value="over500">Amount > 500</option>
-                <option value="over1000">Amount > 1,000</option>
-                <!-- <option>Filter By Date</option> -->
-                <option value="within3Days">Date < 3 days</option>
-                <option value="within1Week">Date < 1 week</option>
             </select>
             <div class="newButton">
                 <div class="innerNewButtonCircle"><div class="plus">+</div></div>
-                <span *ngIf="screenWidth < 768">New</span>
-                <span *ngIf="screenWidth >= 768">New Invoice</span>
+                <span class="noOutline" *ngIf="screenWidth < 768" routerLink="/newInvoice">New</span>
+                <span class="noOutline" *ngIf="screenWidth >= 768" routerLink="/newInvoice">New Invoice</span>
             </div>
         </div>
     </div>
     <div class="invoiceList">
-        <der-grune-bauer-invoice-card class="individualInvoice"></der-grune-bauer-invoice-card>
+        <der-grune-bauer-invoice-card class="individualInvoice noOutline"></der-grune-bauer-invoice-card>
     </div>
 </div>

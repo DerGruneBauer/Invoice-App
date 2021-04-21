@@ -60,6 +60,10 @@
   justify-content: center;
 }
 
+.noOutline {
+  outline: none;
+}
+
 .invoiceList {
   height: auto;
   width: 100%;
