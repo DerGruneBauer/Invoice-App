@@ -8,6 +8,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-between;
+  text-decoration: none;
+}
+.wrapper:active, .wrapper:focus, .wrapper:visited {
+  outline: none;
 }
 
 .hashtag {

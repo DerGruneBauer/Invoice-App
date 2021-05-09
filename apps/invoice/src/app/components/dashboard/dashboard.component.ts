@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoiceCardComponent } from '../invoice-card/invoice-card.component';
 import { InvoiceService } from 'apps/invoice/src/app/invoice.service';
+import {MatDrawer, matDrawerAnimations, MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'der-grune-bauer-dashboard',
@@ -10,6 +11,7 @@ import { InvoiceService } from 'apps/invoice/src/app/invoice.service';
 export class DashboardComponent implements OnInit {
 
   screenWidth: any = window.screen.width;
+  showDrawer: boolean = false;
   
   constructor(private invoiceService: InvoiceService) { }
 
@@ -18,6 +20,10 @@ export class DashboardComponent implements OnInit {
 
   get invoiceNumber() {
     return this.invoiceService.getInvoiceNumber();
+  }
+
+  closeDrawer(){
+    this.showDrawer = false;
   }
 
 }

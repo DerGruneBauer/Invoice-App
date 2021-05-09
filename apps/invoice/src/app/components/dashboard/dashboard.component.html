@@ -1,4 +1,10 @@
 <div class="wrapper">
+    <div class="spacerDiv"></div>
+    <mat-drawer-container class="example-container">
+        <mat-drawer #drawer class="navDrawer" mode="over">
+            <der-grune-bauer-add-invoice *ngIf="showDrawer" (closeEvent)="drawer.toggle()" (closeEvent)="closeDrawer()"></der-grune-bauer-add-invoice>
+          </mat-drawer>
+<div class="innerWrapper">
     <div class="upperStats">
         <div class="invoiceAndAmount">
             <div class="invoiceTitle">Invoices</div>
@@ -14,12 +20,14 @@
             </select>
             <div class="newButton">
                 <div class="innerNewButtonCircle"><div class="plus">+</div></div>
-                <span class="noOutline" *ngIf="screenWidth < 768" routerLink="/newInvoice">New</span>
-                <span class="noOutline" *ngIf="screenWidth >= 768" routerLink="/newInvoice">New Invoice</span>
+                <span class="noOutline" *ngIf="screenWidth < 768" (click)="showDrawer = !showDrawer" (click)="drawer.toggle()">New</span>
+                <span class="noOutline" *ngIf="screenWidth >= 768"  (click)="showDrawer = !showDrawer" (click)="drawer.toggle()">New Invoice</span>
             </div>
         </div>
     </div>
     <div class="invoiceList">
         <der-grune-bauer-invoice-card class="individualInvoice noOutline"></der-grune-bauer-invoice-card>
     </div>
+</div>
+</mat-drawer-container>
 </div>

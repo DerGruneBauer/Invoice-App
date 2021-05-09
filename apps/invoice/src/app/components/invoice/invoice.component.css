@@ -1,10 +1,26 @@
 .wrapper {
-  height: 80vh;
+  height: 90vh;
   width: 100vw;
   background-color: hsl(225, 100%, 98%);
-  padding: 30px 20px;
   overflow-y: auto;
 }
+.innerWrapper {
+  padding: 30px 20px;
+}
+
+mat-drawer-container {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+.navDrawer {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  overflow-y: auto;
+}
+
 .fullSize {
   height: 90vh;
 }
@@ -209,8 +225,15 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .wrapper {
+  .innerWrapper {
     height: 90vh;
+  }
+
+  .navDrawer {
+    width: 70%;
+    position: fixed;
+    margin-top: 10vh;
+    border-radius: 0 25px 25px 0;
   }
 
   .totalStatus {
@@ -256,14 +279,33 @@
   .buttons {
     width: 40%;
   }
+
+  .navDrawer {
+    width: 50%;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
+
   .wrapper {
     width: 100vw;
     height: 100vh;
+    display: flex;
+  }
+
+  .innerWrapper {
     padding: 30px 240px 30px 300px;
   } 
+  .spacerDiv {
+    height: 100%;
+    width: 7.5vw;
+  }
+
+  .navDrawer {
+    width: 35%;
+    margin-top: 0;
+    position: absolute;
+  }
 
   .statusTitle {
     margin-right: 40px;

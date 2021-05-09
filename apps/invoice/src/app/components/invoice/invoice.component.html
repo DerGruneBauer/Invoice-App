@@ -1,4 +1,11 @@
+
 <div class="wrapper">
+  <div class="spacerDiv"></div>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="navDrawer" mode="over">
+        <der-grune-bauer-edit-invoice *ngIf="showDrawer" (closeEvent)="drawer.toggle()" (closeEvent)="closeDrawer()"></der-grune-bauer-edit-invoice>
+      </mat-drawer>
+<div class="innerWrapper">
   <div class="backButton" routerLink="/Dashboard">
     <div class="svgDiv"><svg
       xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +41,7 @@
     </div>
 </div>
     <div class="buttons" *ngIf="screenWidth >= 768">
-        <div class="editButton">Edit</div>
+        <div class="editButton" (click)="showDrawer = !showDrawer" (click)="drawer.toggle()">Edit</div>
         <div class="deleteButton">Delete</div>
         <div class="statusChangeButton">Mark As Paid</div>
     </div>
@@ -104,10 +111,14 @@
         <div class="totalPrice">$ 1,236.09</div>
     </div>
   </div>
+
 </div>
 
+
 <div class="footer" *ngIf="screenWidth < 768">
-    <div class="editButton">Edit</div>
+    <div class="editButton" (click)="showDrawer = !showDrawer" (click)="drawer.toggle()">Edit</div>
     <div class="deleteButton">Delete</div>
     <div class="statusChangeButton">Mark As Paid</div>
   </div>
+</mat-drawer-container>
+</div>

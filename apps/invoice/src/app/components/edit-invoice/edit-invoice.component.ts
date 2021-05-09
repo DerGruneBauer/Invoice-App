@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormComponent } from '../form/form.component';
 
 @Component({
-  selector: 'der-grune-bauer-add-invoice',
-  templateUrl: './add-invoice.component.html',
-  styleUrls: ['./add-invoice.component.css']
+  selector: 'der-grune-bauer-edit-invoice',
+  templateUrl: './edit-invoice.component.html',
+  styleUrls: ['./edit-invoice.component.css']
 })
-export class AddInvoiceComponent implements OnInit {
+export class EditInvoiceComponent implements OnInit {
 
   @Output() closeEvent = new EventEmitter<void>();
 

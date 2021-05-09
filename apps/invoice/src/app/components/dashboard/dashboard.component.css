@@ -2,7 +2,22 @@
   height: 90vh;
   width: 100vw;
   background-color: hsl(225, 100%, 98%);
-  padding: 30px 20px;
+  overflow-y: auto;
+}
+
+.innerWrapper {
+  padding: 0 20px 30px 20px;
+}
+
+mat-drawer-container {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+.navDrawer {
+  width: 100%;
+  height: auto;
+  background-color: white;
   overflow-y: auto;
 }
 
@@ -60,18 +75,21 @@
   justify-content: center;
 }
 
-.noOutline {
-  outline: none;
-}
-
 .invoiceList {
   height: auto;
   width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
-  .wrapper {
-    padding: 30px 40px;
+  .innerWrapper {
+    padding: 0 40px 30px 40px;
+  }
+
+  .navDrawer {
+    width: 70%;
+    position: fixed;
+    margin-top: 10vh;
+    border-radius: 0 25px 25px 0;
   }
 
   .invoiceTitle {
@@ -91,11 +109,34 @@
   }
 }
 
+@media only screen and (min-width: 1024px) {
+  .navDrawer {
+    width: 50%;
+  }
+}
+
 @media only screen and (min-width: 1440px) {
   .wrapper {
     height: 100vh;
     width: 100vw;
-    padding: 60px 240px 30px 300px;
+    padding: 0;
+    display: flex;
+  }
+
+  .spacerDiv {
+    height: 100%;
+    width: 7.5vw;
+  }
+
+  .navDrawer {
+    width: 35%;
+    margin-top: 0;
+    position: absolute;
+  }
+  
+  .innerWrapper {
+    padding: 60px 240px 30px 300px; 
+    width: 100%;
   }
 
   .upperStats {
@@ -113,4 +154,5 @@
     align-items: center;
     justify-content: center;
   }
+
 }

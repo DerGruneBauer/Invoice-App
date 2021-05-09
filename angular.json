@@ -51,7 +51,7 @@
               "apps/invoice/src/favicon.ico",
               "apps/invoice/src/assets"
             ],
-            "styles": ["apps/invoice/src/styles.css"],
+            "styles": ["apps/invoice/src/custom-theme.scss", "apps/invoice/src/styles.css"],
             "scripts": []
           },
           "configurations": {

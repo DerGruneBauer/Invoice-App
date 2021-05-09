@@ -1,5 +1,5 @@
 .wrapper {
-  height: 90vh;
+  height: 100%;
   width: 100vw;
   background-color: hsl(225, 100%, 98%);
   padding: 30px 20px;
@@ -12,10 +12,10 @@
 }
 
 .buttons {
-    display: flex;
-align-items: center;
-justify-content: space-evenly;
-margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 
 .buttons div {
@@ -39,12 +39,27 @@ margin-top: 10px;
   background-color: #9b6dff;
 }
 
+@media only screen and (min-width: 768px) {
+.wrapper {
+  width: 100%;
+}
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+}
+
 @media only screen and (min-width: 1440px) {
+  .wrapper {
+    padding: 30px 50px;
+  }
   .cancelButton:hover {
-    background-color: hsl(221, 50%, 94%);
+    background-color: hsl(224, 65%, 96.75%);
+    cursor: pointer;
   }
 
   .saveButton:hover {
     background-color: #8f64ec;
+    cursor: pointer;
   }
 }

@@ -11,10 +11,13 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { InvoiceCardComponent } from './components/invoice-card/invoice-card.component';
 import { AddInvoiceComponent } from './components/add-invoice/add-invoice.component';
 import { FormComponent } from './components/form/form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { EditInvoiceComponent } from './components/edit-invoice/edit-invoice.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, InvoiceComponent, DashboardComponent, InvoiceCardComponent, AddInvoiceComponent, FormComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
+  declarations: [AppComponent, HeaderComponent, InvoiceComponent, DashboardComponent, InvoiceCardComponent, AddInvoiceComponent, FormComponent, EditInvoiceComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatSidenavModule],
   providers: [],
   bootstrap: [AppComponent],
 })
