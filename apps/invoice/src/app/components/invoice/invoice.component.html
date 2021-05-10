@@ -41,7 +41,7 @@
     </div>
 </div>
     <div class="buttons" *ngIf="screenWidth >= 768">
-        <div class="editButton" (click)="showDrawer = !showDrawer" (click)="drawer.toggle()">Edit</div>
+        <div class="editButton" (click)="showDrawer = true" (click)="drawer.toggle()">Edit</div>
         <div class="deleteButton">Delete</div>
         <div class="statusChangeButton">Mark As Paid</div>
     </div>
@@ -116,7 +116,7 @@
 
 
 <div class="footer" *ngIf="screenWidth < 768">
-    <div class="editButton" (click)="showDrawer = !showDrawer" (click)="drawer.toggle()">Edit</div>
+    <div class="editButton" (click)="showDrawer = true" (click)="drawer.toggle()">Edit</div>
     <div class="deleteButton">Delete</div>
     <div class="statusChangeButton">Mark As Paid</div>
   </div>

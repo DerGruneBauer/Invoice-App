@@ -213,6 +213,7 @@ mat-drawer-container {
 
 .editButton {
   color: black;
+  border: solid lightgray 2px;
   background-color: hsl(225, 100%, 98%);
 }
 .deleteButton {

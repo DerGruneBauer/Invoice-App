@@ -49,7 +49,18 @@ mat-drawer-container {
 .filter {
   width: 90px;
   margin-right: 10px;
+  border: none;
+  background-color: #fafafa;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 10px;
+  text-decoration: none;
+  outline: none;
 }
+.filter:hover {
+  cursor: pointer;
+}
+
 .newButton {
   height: 50px;
   width: 97px;
@@ -58,6 +69,7 @@ mat-drawer-container {
   color: white;
   display: flex;
   align-items: center;
+  font-weight: 500;
 }
 .innerNewButtonCircle {
   height: 35px;
@@ -141,6 +153,10 @@ mat-drawer-container {
 
   .upperStats {
     margin-bottom: 50px;
+  }
+
+  .filter {
+    font-size: 18px;
   }
 
   .newButton:hover {
