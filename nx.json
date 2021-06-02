@@ -26,10 +26,10 @@
       "tags": [],
       "implicitDependencies": ["invoice"]
     },
-    "api": {
+    "api-interfaces": {
       "tags": []
     },
-    "api-interfaces": {
+    "api": {
       "tags": []
     }
   }

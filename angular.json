@@ -46,13 +46,21 @@
             "main": "apps/invoice/src/main.ts",
             "polyfills": "apps/invoice/src/polyfills.ts",
             "tsConfig": "apps/invoice/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/invoice/src/favicon.ico",
               "apps/invoice/src/assets"
             ],
-            "styles": ["apps/invoice/src/custom-theme.scss", "apps/invoice/src/styles.css"],
-            "scripts": []
+            "styles": [
+              "apps/invoice/src/custom-theme.scss",
+              "apps/invoice/src/styles.css"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -147,9 +155,22 @@
         }
       }
     },
+    "api-interfaces": {
+      "root": "libs/api-interfaces",
+      "sourceRoot": "libs/api-interfaces/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        }
+      }
+    },
     "api": {
       "root": "apps/api",
-      "sourceRoot": "apps\\api\\src",
+      "sourceRoot": "apps/api/src",
       "projectType": "application",
       "architect": {
         "build": {
@@ -193,19 +214,6 @@
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
           }
         }
       }
