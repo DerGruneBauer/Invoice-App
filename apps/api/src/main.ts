@@ -1,11 +1,16 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import * as express from 'express';
-
 const app = express();
+const cors = require("cors");
+const pool = require("./app/database");
+
+app.use('/', pool);
+
+
+app.use(cors());
+
+app.use(express.static(__dirname + "/public"));
+
+app.use(express.urlencoded({extended: false}))
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });

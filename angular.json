@@ -41,7 +41,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/invoice",
+            "outputPath": "/public",
             "index": "apps/invoice/src/index.html",
             "main": "apps/invoice/src/main.ts",
             "polyfills": "apps/invoice/src/polyfills.ts",

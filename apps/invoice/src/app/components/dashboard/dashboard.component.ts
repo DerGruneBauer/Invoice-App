@@ -3,6 +3,7 @@ import { InvoiceCardComponent } from '../invoice-card/invoice-card.component';
 import { InvoiceService } from 'apps/invoice/src/app/invoice.service';
 import {MatDrawer, matDrawerAnimations, MatSidenavModule} from '@angular/material/sidenav';
 
+
 @Component({
   selector: 'der-grune-bauer-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,6 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
   get invoiceNumber() {
@@ -26,4 +28,9 @@ export class DashboardComponent implements OnInit {
     this.showDrawer = false;
   }
 
+  getUsers() {
+    this.invoiceService.getUser(2).subscribe((data) => {
+      console.log(data);
+    })
+  }
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,13 @@ export class InvoiceService {
   invoiceNumber = 8;
   invoiceDetails = [];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  apiUrl: string = 'http://localhost:3333/users';
+
+  getUser(id: number){
+    return this.httpClient.get(`${this.apiUrl}/${id}`, {responseType: 'json'})
+  }
 
   getInvoiceNumber() {
     return this.invoiceNumber; //need to update once I have api working.
