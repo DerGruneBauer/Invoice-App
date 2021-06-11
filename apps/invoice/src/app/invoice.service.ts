@@ -16,6 +16,10 @@ export class InvoiceService {
   getUser(id: number){
     return this.httpClient.get(`${this.apiUrl}/${id}`, {responseType: 'json'})
   }
+  
+  getUserInvoices(id: number){
+    return this.httpClient.get(`${this.apiUrl}/${id}/invoices`, {responseType: 'json'})
+  }
 
   getInvoiceNumber() {
     return this.invoiceNumber; //need to update once I have api working.

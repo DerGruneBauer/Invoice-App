@@ -1,12 +1,11 @@
 import * as express from 'express';
-const app = express();
 const cors = require("cors");
+const app = express();
 const pool = require("./app/database");
 
-app.use('/', pool);
-
-
 app.use(cors());
+
+app.use('/', pool);
 
 app.use(express.static(__dirname + "/public"));
 
@@ -20,4 +19,5 @@ const port = process.env.port || 3333;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
+
 server.on('error', console.error);

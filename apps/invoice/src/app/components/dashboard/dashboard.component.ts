@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getUserInvoices();
   }
 
   get invoiceNumber() {
@@ -30,6 +30,12 @@ export class DashboardComponent implements OnInit {
 
   getUsers() {
     this.invoiceService.getUser(2).subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+  getUserInvoices(){
+    this.invoiceService.getUserInvoices(2).subscribe((data) => {
       console.log(data);
     })
   }
