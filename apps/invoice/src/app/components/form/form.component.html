@@ -5,24 +5,28 @@
     <div class="stAddress title">Street Address <br>
     <input type="text"
         class="stAddress"
-        name="stAddress"/></div>
+        name="stAddress"
+        #userAddress/></div>
 
     <div class="postAndCity">
     <div class="city title">City <br>
     <input type="text"
         class=""
-        name="city"/></div>
+        name="city"
+        #userCity/></div>
 
     <div class="postCode title">Post Code<br>
     <input type="text"
         class=""
-        name="postCode"/></div>
+        name="postCode"
+        #userPostcode/></div>
     </div>
 
     <div class="country title">Country <br>
     <input type="text"
         class="country"
-        name="country"/></div>
+        name="country"
+        #userCountry/></div>
     </div>
 
     <div class="billToTitle">Bill To</div>
@@ -30,45 +34,53 @@
     <div class="clientName title">Client's Name <br>
     <input type="text"
         class="clientName"
-        name="clientName"/></div>
+        name="clientName"
+        #clientName/></div>
     
     <div class="clientEmail title">Client's Email <br>
     <input type="text"
         class="clientEmail"
-        name="clientEmail"/></div>
+        name="clientEmail"
+        #clientEmail/></div>
 
     <div class="stAddress title">Street Address <br>
     <input type="text"
         class="clientStAddress"
-        name="clientStAddress"/></div>
+        name="clientStAddress"
+        #clientAddress/></div>
     
     <div class="postAndCity">
     <div class="clientCity title">City <br>
     <input type="text"
         class="clientCity"
-        name="clientCity"/></div>
+        name="clientCity"
+        #clientCity/></div>
 
     <div class="clientPostCode title">Post Code <br>
     <input type="text"
         class="clientPostCode"
-        name="clientPostCode"/></div>
+        name="clientPostCode"
+        #clientPostcode/></div>
     </div>
     
     <div class="clientCountry title">Country <br>
     <input type="text"
         class="clientCountry"
-        name="clientCountry"/></div>
+        name="clientCountry"
+        #clientCountry/></div>
     </div>
 
     <div class="descriptionSection">
     <div class="date title">Invoice Date<br>
     <input type="date"
         class="date"
-        name="date"/></div>
+        name="date"
+        #dueDate/></div>
     
     <div class="paymentTerms title">Payment Terms <br>
     <select
         class="paymentTerms"
+        #paymentTerms
         >
         <option value="30days">30 Days</option>
         <option value="60days">60 Days</option>
@@ -78,7 +90,8 @@
     <div class="projectDescription title">Project Description<br>
     <input type="text"
         class="projectDescription"
-        name="projectDescription"/>
+        name="projectDescription"
+        #projectDescription/>
     </div></div>
 
 
@@ -118,4 +131,8 @@
 </table>
 
 <div class="addItem" (click)="addNewItem()">+ Add New Item</div>
+<div class="buttons">
+    <div class="saveButton" (click)="collectFormInfo(clientName.value, clientEmail.value)" routerLink="/Dashboard">Create Invoice</div>
+    <div class="cancelButton" (click)="closeDrawer()" routerLink="/Dashboard">Cancel</div>
+</div>
 </form>
