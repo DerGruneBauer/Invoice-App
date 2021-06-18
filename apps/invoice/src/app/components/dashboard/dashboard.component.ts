@@ -29,13 +29,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getUsers() {
-    this.invoiceService.getUser(2).subscribe((data) => {
+    this.invoiceService.getUser(1).subscribe((data) => {
       console.log(data);
     })
   }
 
   getUserInvoices(){
-    this.invoiceService.getUserInvoices(2).subscribe((data) => {
+    this.invoiceService.getUserInvoices(1).subscribe((data) => {
       console.log(data);
     })
   }

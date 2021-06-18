@@ -2,10 +2,14 @@ import * as express from 'express';
 const cors = require("cors");
 const app = express();
 const pool = require("./app/database");
-
+const bodyParser = require('body-parser')
+app.use(express.json())
 app.use(cors());
 
 app.use('/', pool);
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(__dirname + "/public"));
 

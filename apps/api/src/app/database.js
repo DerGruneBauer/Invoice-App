@@ -59,6 +59,11 @@ db.put('/invoices/:invoiceId/paid', async(req, res) => {
 //     console.error(err.message);
 // }
 
+//Updateing invoices to create 2d array
+// UPDATE invoices
+// SET items = '{{"Dog Walk", 2, 345.6}, {"Cat Walk", 2.5, 120.3}}'
+// WHERE id = 1;
+
 db.post('/invoices', async(req,res) => {
     const { items } = req.body;
      const { user_id } = req.body;
@@ -74,6 +79,10 @@ db.post('/invoices', async(req,res) => {
      const { client_city } = req.body;
      const { client_postcode } = req.body;
      const { client_country } = req.body;
+     const { user_address} = req.body;
+     const { user_city} = req.body;
+     const { user_postcode} = req.body;
+     const { user_country} = req.body;
     const account = await pool.query(
         `INSERT INTO invoices (
             items, 
@@ -89,7 +98,11 @@ db.post('/invoices', async(req,res) => {
             client_address, 
             client_city, 
             client_postcode, 
-            client_country
+            client_country,
+            billfrom_address,
+            billfrom_city,
+            billfrom_postcode,
+            billfrom_country
             )
         VALUES (
             $1, 
@@ -105,9 +118,13 @@ db.post('/invoices', async(req,res) => {
             $11, 
             $12, 
             $13, 
-            $14
+            $14,
+            $15,
+            $16,
+            $17,
+            $18
             );
-        `
+        `, [items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country]
     );
     res.json(account.rows);
 })

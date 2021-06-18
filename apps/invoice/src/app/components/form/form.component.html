@@ -1,4 +1,4 @@
-<form #invoiceForm = "ngForm">
+<form #invoiceForm = "">
 
     <div class="billFromTitle">Bill From</div>
     <div class="billFromSection">
@@ -6,27 +6,31 @@
     <input type="text"
         class="stAddress"
         name="stAddress"
-        #userAddress/></div>
+        #userAddress
+        value={{userInfo[0].user_address}}/></div>
 
     <div class="postAndCity">
     <div class="city title">City <br>
     <input type="text"
         class=""
         name="city"
-        #userCity/></div>
+        #userCity
+        value={{userInfo[0].user_city}}/></div>
 
     <div class="postCode title">Post Code<br>
     <input type="text"
         class=""
         name="postCode"
-        #userPostcode/></div>
+        #userPostcode
+        value={{userInfo[0].user_postcode}}/></div>
     </div>
 
     <div class="country title">Country <br>
     <input type="text"
         class="country"
         name="country"
-        #userCountry/></div>
+        #userCountry
+        value={{userInfo[0].user_country}}/></div>
     </div>
 
     <div class="billToTitle">Bill To</div>
@@ -82,9 +86,9 @@
         class="paymentTerms"
         #paymentTerms
         >
-        <option value="30days">30 Days</option>
-        <option value="60days">60 Days</option>
-        <option value="90days">90 Days</option>
+        <option value="Net 30 Days">30 Days</option>
+        <option value="Net 60 Days">60 Days</option>
+        <option value="Net 90 Days">90 Days</option>
     </select></div>
     
     <div class="projectDescription title">Project Description<br>
@@ -103,21 +107,24 @@
         <th class="title">Price</th>
         <th class="subTotal title">Total</th>
     </tr>
-    <tr *ngFor="let item of items; let i=index">
+    <tr class = "items" *ngFor="let item of items; let i=index">
         <td>
             <input type="text"
                 class="itemName"
-                name="itemName"/>
+                name="itemName"
+                />
         </td>
         <td>
             <input type="number"
                 class="quantity"
-                name="quantity"/>
+                name="quantity"
+                />
         </td>
         <td>
             <input type="number"
                 class="price"
-                name="price"/>
+                name="price"
+            />
         </td>
         <td class="subTotal">
             <div class="subTotalPrice">
@@ -132,7 +139,20 @@
 
 <div class="addItem" (click)="addNewItem()">+ Add New Item</div>
 <div class="buttons">
-    <div class="saveButton" (click)="collectFormInfo(clientName.value, clientEmail.value)" routerLink="/Dashboard">Create Invoice</div>
+    <div class="saveButton" 
+    (click)="postInvoice(userAddress.value, 
+    userCity.value, 
+    userPostcode.value, 
+    userCountry.value, 
+    clientName.value, 
+    clientEmail.value, 
+    clientAddress.value, 
+    clientCity.value, 
+    clientPostcode.value, 
+    clientCountry.value, 
+    dueDate.value,
+    paymentTerms.value,
+    projectDescription.value)" routerLink="/Dashboard">Create Invoice</div>
     <div class="cancelButton" (click)="closeDrawer()" routerLink="/Dashboard">Cancel</div>
 </div>
 </form>

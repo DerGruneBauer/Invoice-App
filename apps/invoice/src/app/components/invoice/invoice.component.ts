@@ -11,10 +11,12 @@ export class InvoiceComponent implements OnInit {
 
   screenWidth: any = window.screen.width;
   showDrawer: boolean = false;
+  invoices = {};
   
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
+    this.getUserInvoices();
   }
 
   get invoiceDetails() {
@@ -23,6 +25,13 @@ export class InvoiceComponent implements OnInit {
 
   closeDrawer(){
     this.showDrawer = false;
+  }
+
+  getUserInvoices(){
+    this.invoiceService.getUserInvoices(1).subscribe((data) => {
+      this.invoices = data;
+      console.log(data);
+    })
   }
 
 }
