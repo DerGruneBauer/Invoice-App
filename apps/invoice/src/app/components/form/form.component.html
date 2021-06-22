@@ -100,14 +100,14 @@
 
 
 <div class="itemListTitle">Item List</div>
-<table>
+<table class="items">
     <tr>
         <th class="title">Item Name</th>
         <th class="title">Qty</th>
         <th class="title">Price</th>
         <th class="subTotal title">Total</th>
     </tr>
-    <tr class = "items" *ngFor="let item of items; let i=index">
+    <tr *ngFor="let item of items; let i=index">
         <td>
             <input type="text"
                 class="itemName"

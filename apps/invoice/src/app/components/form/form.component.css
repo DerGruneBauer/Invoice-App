@@ -61,23 +61,25 @@ div .date, div .paymentTerms, div .projectDescription {
     margin: 10px 0 20px 0;
 }
 
-tr {
+
+.items {
     width: 100%;
-    border: solid red 1px;
 }
-
-/* .itemName {
-    margin-right: 3px;
+.itemName {
+    width: 160px;
 }
-
 .quantity {
-    width: 45px;
-    margin-right: 3px;
+    width: 55px;
 }
 .price {
-    width: 75px;
+    width: 80px;
+}
+
+
+.itemName, .quantity, .price {
     margin-right: 3px;
-} */
+}
+
 .subTotal{
     height: 35px;
     display: none;
@@ -174,14 +176,14 @@ tr {
         cursor: pointer;
     }
     .itemName {
-        width: 12vw;
+        width: 11vw;
     }
     .quantity {
-        width: 5vw;
+        width: 3vw;
         
     }
     .price {
-        width: 5vw;
+        width: 4.5vw;
     }
 
     .cancelButton:hover {

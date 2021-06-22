@@ -13,15 +13,11 @@ export class DashboardComponent implements OnInit {
 
   screenWidth: any = window.screen.width;
   showDrawer: boolean = false;
-  
+  invoiceNumber: number;
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    this.getUserInvoices();
-  }
-
-  get invoiceNumber() {
-    return this.invoiceService.getInvoiceNumber();
+    this.getUserInvoiceCount();
   }
 
   closeDrawer(){
@@ -34,9 +30,14 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  getUserInvoices(){
-    this.invoiceService.getUserInvoices(1).subscribe((data) => {
-      console.log(data);
+  // subscribe(x => {
+  //   this.totalCount = x.length;
+  //   this.mySubject.next(x);
+  //   });
+
+  getUserInvoiceCount(){
+    this.invoiceService.getUserInvoices(1).subscribe((data: any) => {
+      this.invoiceNumber = data.length;
     })
   }
 }

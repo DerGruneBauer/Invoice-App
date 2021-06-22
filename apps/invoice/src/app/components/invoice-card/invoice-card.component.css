@@ -14,12 +14,24 @@
   outline: none;
 }
 
+.codeDateAmount{
+  display: flex;
+  flex-direction: column;
+}
+
+.clientStatus{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hashtag {
   color: gray; /*Needs to be toggle icon color in dark theme*/
   font-size: 16px;
   font-weight: bold;
   display: flex;
   margin-bottom: 23px;
+ 
 }
 .code {
   color: black;
@@ -79,6 +91,20 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-left: 0;
+  }
+  .codeDateAmount{
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 55%;
+    align-items: center;
+  }
+  
+  .clientStatus{
+    flex-direction: row;
+    width: 45%;
+    justify-content: space-between;
+    padding-right: 30px;
   }
 
   .client,
@@ -102,5 +128,9 @@
   }
   .wrapper svg {
     margin-left: -45px;
+  }
+   
+  .clientStatus{
+    padding-right: 45px;
   }
 }
