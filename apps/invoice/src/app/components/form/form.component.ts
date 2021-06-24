@@ -8,12 +8,10 @@ import { InvoiceService } from 'apps/invoice/src/app/invoice.service';
 })
 export class FormComponent implements OnInit {
 
-  items = ["one Item"];
-  quantity: number[] = [];
-  price: number[] = [];
+  items:[[string, number, number]] = [["Item Name", 0, 0]];
   userId = 1;
   userInfo = {};
-
+  total = [];
   constructor(private invoiceService: InvoiceService) { }
 
   @Output() closeEvent = new EventEmitter<void>();
@@ -28,15 +26,40 @@ export class FormComponent implements OnInit {
       console.log(data);
     })
   }
+
   addNewItem() {
-    this.items.push("one Item");
-    // this.quantity.push(0);
-    // this.price.push(0);
+    if(this.items.length == 1){
+        let itemPriceX = document.getElementsByName('price')[0] as HTMLInputElement;
+        let price = itemPriceX.value;
+        let itemNameX = document.getElementsByName('itemName')[0] as HTMLInputElement;
+        let itemName = itemNameX.value;
+        let itemQuantityX = document.getElementsByName('quantity')[0] as HTMLInputElement;
+        let quantity = itemQuantityX.value;
+        this.items[0] = [itemName, parseFloat(quantity), parseFloat(price)];
+        this.items.push(["Item Name", 0, 0]);
+        return;
+    } else {
+      for (let i = 0; i < this.items.length; i++) {
+        let itemPriceX = document.getElementsByName('price')[i] as HTMLInputElement;
+        let price = itemPriceX.value;
+        let itemNameX = document.getElementsByName('itemName')[i] as HTMLInputElement;
+        let itemName = itemNameX.value;
+        let itemQuantityX = document.getElementsByName('quantity')[i] as HTMLInputElement;
+        let quantity = itemQuantityX.value;
+        this.items[i] = [itemName, parseFloat(quantity), parseFloat(price)];
+      }
+      this.items.push(["Item Name", 0, 0]);
+    }
+    console.log(this.items);
+  }
+
+  getTotal(id:number, quantity:number, price:number){
+    this.total[id] = quantity*price;
   }
 
   removeNewItem(id: number) {
-    console.log(id);
     this.items.splice(id, 1);
+    this.total.splice(id, 1);
   }
 
   postInvoice(userAddress, userCity, userPostcode, userCountry, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, dueDate, paymentTerms, projectDescription) {

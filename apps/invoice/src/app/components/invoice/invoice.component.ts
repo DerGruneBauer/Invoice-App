@@ -30,7 +30,6 @@ export class InvoiceComponent implements OnInit {
   getUserInvoices(){
     this.invoiceService.getUserInvoices(1).subscribe((data) => {
       this.invoices = data;
-      console.log(data);
     })
   }
 

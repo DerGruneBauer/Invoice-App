@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from '../app/components/header/header.component';
@@ -17,7 +17,7 @@ import { EditInvoiceComponent } from './components/edit-invoice/edit-invoice.com
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, InvoiceComponent, DashboardComponent, InvoiceCardComponent, AddInvoiceComponent, FormComponent, EditInvoiceComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatSidenavModule],
+  imports: [BrowserModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatSidenavModule],
   providers: [],
   bootstrap: [AppComponent],
 })

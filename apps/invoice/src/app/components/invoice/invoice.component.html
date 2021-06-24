@@ -51,24 +51,24 @@
     <div class="firstInfoBox">
         <div>
       <div class="invoiceCode title">
-        #<span class="code bold">{{ invoiceDetails[0].code }}</span>
+        #<span class="code bold">RT00{{ invoiceDetails[0].id }}</span>
       </div>
       <div class="projectDescription title">
         {{ invoiceDetails[0].projectDescription }}
       </div>
     </div>
       <div class="address title">
-        {{ invoiceDetails[0].stAddress }}<br />
-        {{ invoiceDetails[0].city }}<br />
-        {{ invoiceDetails[0].postCode }}<br />
-        {{ invoiceDetails[0].country }}<br />
+        {{ invoiceDetails[0].billfrom_address }}<br />
+        {{ invoiceDetails[0].billfrom_city }}<br />
+        {{ invoiceDetails[0].billfrom_postcode }}<br />
+        {{ invoiceDetails[0].billfrom_country }}<br />
       </div>
     </div>
     <div class="clientInfo">
     <div class="secondInfoBox">
       <div class="invoiceDate title">
         Invoice Date<br />
-        <div class="iDate bold">{{ invoiceDetails[0].date }}</div>
+        <div class="iDate bold">{{ invoiceDetails[0].due_date | date }}</div>
       </div>
       <div class="paymentDate title">
         Payment Date<br />
@@ -79,36 +79,36 @@
       <div class="billTo title">
         Bill To<br />
         <div class="clientName bold" >{{
-          invoiceDetails[0].client
+          invoiceDetails[0].client_name
         }}</div
         >
         <div class="clientAddress">
-        {{ invoiceDetails[0].clientStAddress }}<br />
-        {{ invoiceDetails[0].clientCity }}<br />
-        {{ invoiceDetails[0].clientPostCode }}<br />
-        {{ invoiceDetails[0].clientCountry }}<br />
+        {{ invoiceDetails[0].client_address }}<br />
+        {{ invoiceDetails[0].client_city }}<br />
+        {{ invoiceDetails[0].client_postCode }}<br />
+        {{ invoiceDetails[0].client_country }}<br />
     </div>
       </div>
     </div>
     <div class="sendTo title">
       Send To<br />
       <div class="clientEmail bold">{{
-        invoiceDetails[0].clientEmail
+        invoiceDetails[0].client_email
       }}</div>
     </div>
 </div>
     <div class="itemDetails">
-        <div class="items" *ngFor="let item of invoiceDetails[0].itemList; let i = index;">
+        <div class="items" *ngFor="let item of invoiceDetails[0].items; let i = index;">
             <div>
-                <div class="itemName">{{ invoiceDetails[0].itemList[i].itemName }}</div>
-                <div class="itemQty">{{ invoiceDetails[0].itemList[i].quantity }} x ${{ invoiceDetails[0].itemList[i].price }}</div>
+                <div class="itemName">{{ invoiceDetails[0].items[i][0] }}</div>
+                <div class="itemQty">{{ invoiceDetails[0].items[i][1] }} x {{ invoiceDetails[0].items[i][2] | currency}}</div>
             </div>
-            <div class="subTotal">${{ (invoiceDetails[0].itemList[i].quantity * invoiceDetails[0].itemList[i].price).toFixed(2) }}</div>
+            <div class="subTotal">{{ (invoiceDetails[0].items[i][1] * invoiceDetails[0].items[i][2]).toFixed(2) | currency}}</div>
         </div>
     </div>
     <div class="grandTotal">
         <div class="totalTitle">Grand Total</div>
-        <div class="totalPrice">$ 1,236.09</div>
+        <div class="totalPrice">{{invoiceDetails[0].amount_due | currency}}</div>
     </div>
   </div>
 

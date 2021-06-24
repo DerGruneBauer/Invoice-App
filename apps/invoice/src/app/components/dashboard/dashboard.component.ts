@@ -30,14 +30,10 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  // subscribe(x => {
-  //   this.totalCount = x.length;
-  //   this.mySubject.next(x);
-  //   });
-
   getUserInvoiceCount(){
     this.invoiceService.getUserInvoices(1).subscribe((data: any) => {
       this.invoiceNumber = data.length;
     })
   }
+
 }

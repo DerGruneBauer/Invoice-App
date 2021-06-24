@@ -9,22 +9,9 @@ import { InvoiceService } from 'apps/invoice/src/app/invoice.service';
 export class InvoiceCardComponent implements OnInit {
 
   screenWidth: any = window.screen.width;
-
-  // invoices: any[] = [
-  //   {code: "RT3080", date: "19 Sep 2022", amount: "$4,000.90", status: "Pending", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: '21 Aug 2021'},
-  //   {code: "RT3080", date: "19 Sep 2022", amount: "$4,000.90", status: "Paid", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: '21 Aug 2021'},
-  //   {code: "RT3080", date: "August 19, 2020", amount: "$4,000.90", status: "Draft", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: '21 Aug 2021'},
-  //   {code: "RT3080", date: "August 19, 2020", amount: "$4,000.90", status: "Pending", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: '21 Aug 2021'},
-  //   {code: "RT3080", date: "August 19, 2020", amount: "$4,000.90", status: "Draft", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: '21 Aug 2021'},
-  //   {code: "RT3080", date: "August 19, 2020", amount: "$4,000.90", status: "Draft", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: 'September 9, 2021'},
-  //   {code: "RT3080", date: "August 19, 2020", amount: "$4,000.90", status: "Draft", client: "Boris Crowther", stAddress: '19 Union Terrace', city: 'London', postCode: '48221', country: 'United Kingdom', clientEmail: 'BCrowther@mail.com', clientStAddress: '84 Church Way', clientCity: 'Bradford', clientPostCode: '48992', clientCountry: 'United Kingdom', paymentTerms: "Net 30 days", projectDescription: 'Graphic Design', itemList: [{itemName: 'Logo', quantity: 3, price: 90.00}, {itemName: 'Branding', quantity: 2, price: 125.45}], paymentDate: 'September 9, 2021'},
-  // ];
-
   invoices = [];
-
+//maybe could write a pipe that formats the invoice ids to be a code eg. #RT001 vs just 1
   constructor(private invoiceService: InvoiceService) { }
-  
-
 
   ngOnInit(): void {
     this.getUserInvoices();

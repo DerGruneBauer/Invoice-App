@@ -107,28 +107,35 @@
         <th class="title">Price</th>
         <th class="subTotal title">Total</th>
     </tr>
-    <tr *ngFor="let item of items; let i=index">
+    <tr *ngFor="let item of items; let i = index;">
         <td>
             <input type="text"
                 class="itemName"
                 name="itemName"
+                value = {{item[0]}}
                 />
         </td>
         <td>
             <input type="number"
                 class="quantity"
                 name="quantity"
+                #quantity
+                value = {{item[1]}}
+                (change)="getTotal(i, quantity.value, price.value)"
                 />
         </td>
         <td>
             <input type="number"
                 class="price"
                 name="price"
+                #price
+                value = {{item[2]}}
+                (change)="getTotal(i, quantity.value, price.value)"
             />
         </td>
         <td class="subTotal">
             <div class="subTotalPrice">
-                <!-- {{ quantity[i] * price[i] }} -->$400
+                {{(total[i])}}
             </div>
         </td>
         <svg (click)="removeNewItem(i)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 deleteNewItem" fill="none" viewBox="0 0 24 24" stroke="currentColor">
