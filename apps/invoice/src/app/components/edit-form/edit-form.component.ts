@@ -2,33 +2,38 @@ import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter }
 import { InvoiceService } from 'apps/invoice/src/app/invoice.service';
 
 @Component({
-  selector: 'der-grune-bauer-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: 'der-grune-bauer-edit-form',
+  templateUrl: './edit-form.component.html',
+  styleUrls: ['./edit-form.component.css']
 })
-export class FormComponent implements OnInit {
-
-  items:[[string, number, number]] = [["Item Name", 0, 0]];
+export class EditFormComponent implements OnInit {
+  items = this.invoiceDetails[0].items;
   userId = 1;
   userInfo = {};
   total = [];
   constructor(private invoiceService: InvoiceService) { }
 
   @Output() closeEvent = new EventEmitter<void>();
-  // @Output() sendNewInvoiceData = new EventEmitter<void>();
 
   ngOnInit(): void {
     this.getUserInfo();
+    this.getOldTotals();
   }
 
-  // sendInvoiceData = () => {
-  //   this.sendNewInvoiceData.emit();
-  // }
+  get invoiceDetails() {
+    return this.invoiceService.returnInvoiceDetails();
+  }
+
+  modifyDueDateString(){
+    let dueDate = this.invoiceDetails[0].due_date;
+    let modDueDate = dueDate.substring(0,10);
+    return modDueDate;
+  }
 
   getUserInfo() {
     this.invoiceService.getUser(this.userId).subscribe((data) => {
       this.userInfo = data;
-      console.log(data);
+      
     })
   }
 
@@ -55,11 +60,16 @@ export class FormComponent implements OnInit {
       }
       this.items.push(["Item Name", 0, 0]);
     }
-    console.log(this.items);
+    
   }
 
   getTotal(id:number, quantity:number, price:number){
     this.total[id] = quantity*price;
+  }
+  getOldTotals(){
+    for(let i = 0; i < this.invoiceDetails[0].items.length; i++) {
+      this.total[i] = this.invoiceDetails[0].items[i][1]*this.invoiceDetails[0].items[i][2];
+    }
   }
 
   removeNewItem(id: number) {
@@ -67,7 +77,7 @@ export class FormComponent implements OnInit {
     this.total.splice(id, 1);
   }
 
-  postInvoice(userAddress, userCity, userPostcode, userCountry, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, dueDate, paymentTerms, projectDescription) {
+  updateInvoice(userAddress, userCity, userPostcode, userCountry, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, dueDate, paymentTerms, projectDescription, invoiceId) {
     let itemArray = [];
     let amountDue: number = 0;
     for (let i = 0; i < this.items.length; i++) {
@@ -80,8 +90,8 @@ export class FormComponent implements OnInit {
       itemArray.push([itemName, parseFloat(quantity), parseFloat(price)]);
       amountDue += parseFloat(quantity)*parseFloat(price);
     }
-    this.invoiceService.postNewInvoice(itemArray, 1, dueDate, amountDue, "Pending", null, paymentTerms, projectDescription, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, userAddress, userCity, userPostcode, userCountry).subscribe((data) => {
-      console.log(data);
+    this.invoiceService.updateInvoice(itemArray, 1, dueDate, amountDue, "Pending", null, paymentTerms, projectDescription, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, userAddress, userCity, userPostcode, userCountry, invoiceId).subscribe((data) => {
+      
     })
 
   }
@@ -89,7 +99,7 @@ export class FormComponent implements OnInit {
   closeDrawer = () => {
     this.closeEvent.emit();
   };
-  
+
   refresh(): void {
     window.location.reload();
 }

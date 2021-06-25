@@ -39,39 +39,45 @@
     <input type="text"
         class="clientName"
         name="clientName"
-        #clientName/></div>
+        #clientName
+        value={{invoiceDetails[0].client_name}}/></div>
     
     <div class="clientEmail title">Client's Email <br>
     <input type="text"
         class="clientEmail"
         name="clientEmail"
-        #clientEmail/></div>
+        #clientEmail
+        value={{invoiceDetails[0].client_email}}/></div>
 
     <div class="stAddress title">Street Address <br>
     <input type="text"
         class="clientStAddress"
         name="clientStAddress"
-        #clientAddress/></div>
+        #clientAddress
+        value={{invoiceDetails[0].client_address}}/></div>
     
     <div class="postAndCity">
     <div class="clientCity title">City <br>
     <input type="text"
         class="clientCity"
         name="clientCity"
-        #clientCity/></div>
+        #clientCity
+        value={{invoiceDetails[0].client_city}}/></div>
 
     <div class="clientPostCode title">Post Code <br>
     <input type="text"
         class="clientPostCode"
         name="clientPostCode"
-        #clientPostcode/></div>
+        #clientPostcode
+        value={{invoiceDetails[0].client_postcode}}/></div>
     </div>
     
     <div class="clientCountry title">Country <br>
     <input type="text"
         class="clientCountry"
         name="clientCountry"
-        #clientCountry/></div>
+        #clientCountry
+        value={{invoiceDetails[0].client_country}}/></div>
     </div>
 
     <div class="descriptionSection">
@@ -79,12 +85,14 @@
     <input type="date"
         class="date"
         name="date"
-        #dueDate/></div>
+        #dueDate
+        value={{modifyDueDateString()}}/></div>
     
     <div class="paymentTerms title">Payment Terms <br>
     <select
         class="paymentTerms"
         #paymentTerms
+        value={{invoiceDetails[0].payment_terms}}
         >
         <option value="Net 30 Days">30 Days</option>
         <option value="Net 60 Days">60 Days</option>
@@ -95,7 +103,8 @@
     <input type="text"
         class="projectDescription"
         name="projectDescription"
-        #projectDescription/>
+        #projectDescription
+        value={{invoiceDetails[0].project_description}}/>
     </div></div>
 
 
@@ -107,7 +116,7 @@
         <th class="title">Price</th>
         <th class="subTotal title">Total</th>
     </tr>
-    <tr *ngFor="let item of items; let i = index;">
+    <tr *ngFor="let item of invoiceDetails[0].items; let i = index;">
         <td>
             <input type="text"
                 class="itemName"
@@ -147,7 +156,7 @@
 <div class="addItem" (click)="addNewItem()">+ Add New Item</div>
 <div class="buttons">
     <div class="saveButton" 
-    (click)="postInvoice(userAddress.value, 
+    (click)="updateInvoice(userAddress.value, 
     userCity.value, 
     userPostcode.value, 
     userCountry.value, 
@@ -159,7 +168,8 @@
     clientCountry.value, 
     dueDate.value,
     paymentTerms.value,
-    projectDescription.value)" (click)= "refresh()" routerLink="/Dashboard">Create Invoice</div>
+    projectDescription.value,
+    invoiceDetails[0].id)" routerLink="/Dashboard" (click)= "refresh()">Save Changes</div>
     <div class="cancelButton" (click)="closeDrawer()" routerLink="/Dashboard">Cancel</div>
 </div>
 </form>

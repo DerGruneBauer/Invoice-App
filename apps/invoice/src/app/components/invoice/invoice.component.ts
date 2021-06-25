@@ -33,4 +33,9 @@ export class InvoiceComponent implements OnInit {
     })
   }
 
+  markInvoicePaid(id: number){
+    this.invoiceService.updateInvoicePaid(id).subscribe((data) => {
+    })
+  }
+
 }

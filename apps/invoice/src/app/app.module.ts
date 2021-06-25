@@ -14,9 +14,10 @@ import { FormComponent } from './components/form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { EditInvoiceComponent } from './components/edit-invoice/edit-invoice.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, InvoiceComponent, DashboardComponent, InvoiceCardComponent, AddInvoiceComponent, FormComponent, EditInvoiceComponent],
+  declarations: [AppComponent, HeaderComponent, InvoiceComponent, DashboardComponent, InvoiceCardComponent, AddInvoiceComponent, FormComponent, EditInvoiceComponent, EditFormComponent],
   imports: [BrowserModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatSidenavModule],
   providers: [],
   bootstrap: [AppComponent],

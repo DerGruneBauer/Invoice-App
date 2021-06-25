@@ -10,17 +10,29 @@ export class InvoiceCardComponent implements OnInit {
 
   screenWidth: any = window.screen.width;
   invoices = [];
-//maybe could write a pipe that formats the invoice ids to be a code eg. #RT001 vs just 1
+
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
     this.getUserInvoices();
   }
 
+  formatCode(id: number){
+    let codeFormat = "";
+    if(id > 9) {
+      codeFormat = "RT0";
+    } else if (id < 10){
+      codeFormat = "RT00";
+    } else {
+      codeFormat = "RT";
+    }
+    return codeFormat;
+  }
+
   getUserInvoices(){
     this.invoiceService.getUserInvoices(1).subscribe((data: []) => {
       this.invoices = data;
-      console.log(this.invoices);
+      
     })
   }
 

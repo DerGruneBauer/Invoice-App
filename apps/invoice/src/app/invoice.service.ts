@@ -27,7 +27,7 @@ export class InvoiceService {
   }
 
   getInvoiceNumber() {
-    return this.invoiceNumber; //need to update once I have api working.
+    return this.invoiceNumber; 
   }
 
   getInvoiceDetails(invoice: object) {
@@ -40,8 +40,17 @@ export class InvoiceService {
         }
   }
 
+  updateInvoice(items: any[], user_id: number, due_date: Date, amount_due: number, status: string, payment_date: Date, payment_terms: string, project_description: string, client_name: string, client_email: string, client_address: string, client_city: string, client_postcode: number, client_country: string, user_address:string, user_city: string, user_postcode: number, user_country:string, invoiceId:number,){
+    return this.httpClient.put(`${this.invoiceUrl}`, { items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country, invoiceId})
+  }
+
+  updateInvoicePaid(id: number){
+    return this.httpClient.put<any>(`${this.invoiceUrl}/invoices/${id}/paid`, { id });
+  }
+
 returnInvoiceDetails() {
   return this.invoiceDetails;
 }
+
 
 }

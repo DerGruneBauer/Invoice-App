@@ -39,32 +39,14 @@ db.get('/users/:id/invoices', async (req, res,) => {
 db.put('/invoices/:invoiceId/paid', async(req, res) => {
     const account = await pool.query(
         `UPDATE invoices
-         SET status = 'paid'
-         payment_date = '2021-12-12'
+         SET status = 'paid',
+         payment_date = NOW()
          WHERE id = ${req.params.invoiceId}`
     );
     res.json(account.rows);
 })
 
-// try {
-//     const { handle_id } = req.body;
-//     const { tag_id } = req.body;
-//     const newMapping = await pool.query(
-//         "INSERT INTO tagmap (handle_id, tag_id) VALUES ($1, $2) RETURNING *",
-//         [handle_id, tag_id]
-//     );
-
-//     res.json(newMapping.rows);
-// } catch (err) {
-//     console.error(err.message);
-// }
-
-//Updateing invoices to create 2d array
-// UPDATE invoices
-// SET items = '{{"Dog Walk", 2, 345.6}, {"Cat Walk", 2.5, 120.3}}'
-// WHERE id = 1;
-
-db.post('/invoices', async(req,res) => {
+db.post('/invoices/', async(req,res) => {
     const { items } = req.body;
      const { user_id } = req.body;
      const { due_date } = req.body;
@@ -129,16 +111,52 @@ db.post('/invoices', async(req,res) => {
     res.json(account.rows);
 })
 
-//Get all users
-// db.get('/users', async (req, res) => {
-//   try {
-//       const account = await pool.query(
-//           `select * from users`);
-//           res.json(account.rows);
-//   } catch (error) {
-//       console.error(err.message);
-//   }
-// });
+db.put('/invoices/:invoiceId', async(req,res) => {
+    const { items } = req.body;
+     const { user_id } = req.body;
+     const { due_date } = req.body;
+     const { amount_due } = req.body;
+     const { status } = req.body;
+     const { payment_date } = req.body;
+     const { payment_terms } = req.body;
+     const { project_description } = req.body;
+     const { client_name } = req.body;
+     const { client_email } = req.body;
+     const { client_address } = req.body;
+     const { client_city } = req.body;
+     const { client_postcode } = req.body;
+     const { client_country } = req.body;
+     const { user_address} = req.body;
+     const { user_city} = req.body;
+     const { user_postcode} = req.body;
+     const { user_country} = req.body;
+     const { invoiceId } = req.body;
+    const account = await pool.query(
+        `UPDATE invoices
+            set items = $1, 
+            set user_id = $2,
+            set due_date = $3, 
+            set amount_due= $4, 
+            set status= $5, 
+            set payment_date= $6, 
+            set payment_terms= $7, 
+            set project_description= $8, 
+            set client_name= $9, 
+            set client_email= $10, 
+            set client_address= $11, 
+            set client_city= $12, 
+            set client_postcode= $13, 
+            set client_country= $14,
+            set billfrom_address= $15,
+            set billfrom_city= $16,
+            set billfrom_postcode= $17,
+            set billfrom_country= $18
+            WHERE invoiceId = $19
+        `, [items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country, invoiceId]
+    );
+    res.json(account.rows);
+})
+
 
 
 module.exports = db;
