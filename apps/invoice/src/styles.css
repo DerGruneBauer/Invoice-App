@@ -1,5 +1,5 @@
 :root {
-    --text: black;
+  --text: black;
   --invoiceCardBg: white;
   --subText: grey;
   --pageBg: #fafafa;
@@ -9,6 +9,7 @@
   --invoiceCarat: black;
   --statusDraftWord: gray;
   --invoiceBoxShadow: rgba(48,47,48,0.1);
+  --invoiceTotalSheetBg: hsl(225, 100%, 98%);
 }
 
 * {

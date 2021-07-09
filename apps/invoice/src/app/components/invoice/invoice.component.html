@@ -50,8 +50,8 @@
   <div class="invoiceInfo">
     <div class="firstInfoBox">
         <div>
-      <div class="invoiceCode title">
-        #<span class="code bold">RT00{{ invoiceDetails[0].id }}</span>
+      <div class="invoiceCode title bold">
+        #<span class="code bold">{{ formatCode(invoiceDetails[0].id) }}{{ invoiceDetails[0].id }}</span>
       </div>
       <div class="projectDescription title">
         {{ invoiceDetails[0].projectDescription }}

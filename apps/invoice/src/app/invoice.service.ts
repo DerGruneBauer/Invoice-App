@@ -12,6 +12,7 @@ export const darkTheme = {
   'invoiceCarat': '#9b6dff',
   'statusDraftWord': 'rgb(216, 216, 216)',
   'invoiceBoxShadow': 'black',
+  'invoiceTotalSheetBg': 'hsl(229, 30%, 26%)',
 };
 
 export const lightTheme = {
@@ -25,6 +26,7 @@ export const lightTheme = {
   'invoiceCarat': 'black',
   'statusDraftWord': 'gray',
   'invoiceBoxShadow': 'rgba(48,47,48,0.1)',
+  'invoiceTotalSheetBg': 'hsl(225, 100%, 98%)'
 };
 @Injectable({
   providedIn: 'root'

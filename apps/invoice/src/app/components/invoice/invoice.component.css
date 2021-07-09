@@ -1,7 +1,7 @@
 .wrapper {
   height: 90vh;
   width: 100vw;
-  background-color: hsl(225, 100%, 98%);
+  background-color: var(--pageBg);
   overflow-y: auto;
 }
 .innerWrapper {
@@ -12,12 +12,13 @@ mat-drawer-container {
   width: 100%;
   height: auto;
   overflow-y: auto;
+  background-color: var(--pageBg);
 }
 
 .navDrawer {
   width: 100%;
   height: auto;
-  background-color: white;
+  background-color: var(--pageBg);
   overflow-y: auto;
 }
 
@@ -33,10 +34,12 @@ mat-drawer-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--text);
 }
 .backButton svg {
   height: 15px;
   width: 15px;
+  color: var(--text);
 }
 
 .invoiceStatus {
@@ -45,11 +48,11 @@ mat-drawer-container {
   padding: 20px;
   border-radius: 5px;
   margin-bottom: 20px;
-  background-color: white;
+  background-color: var(--invoiceCardBg);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 6px 24px -7px rgba(48, 47, 48, 0.1);
+  box-shadow: 0px 6px 24px -7px var(--invoiceBoxShadow);
 }
 
 .totalStatus {
@@ -78,25 +81,25 @@ mat-drawer-container {
   font-size: 15px;
 }
 .statusPaid {
-  background: rgba(218, 254, 220, 0.5);
-  color: #2ac237;
+  background: var(--paidIcon);
+  color: #2ac28f;
 }
 .statusPending {
-  background: rgba(254, 236, 218, 0.5);
+  background: var(--pendingIcon);
   color: #fc9c39;
 }
 .statusDraft {
-  background: rgba(233, 232, 232, 0.5);
-  color: gray;
+  background: var(--draftIcon);
+  color: var(--statusDraftWord);
 }
 
 .invoiceInfo {
   height: auto;
   width: 100%;
   border-radius: 5px;
-  background-color: white;
+  background-color: var(--invoiceCardBg);
   padding: 20px;
-  box-shadow: 0px 6px 24px -7px rgba(48, 47, 48, 0.1);
+  box-shadow: 0px 6px 24px -7px var(--invoiceBoxShadow);
 }
 
 .firstInfoBox {
@@ -107,7 +110,9 @@ mat-drawer-container {
 }
 
 .code {
-  color: black;
+  color: var(--text);
+  letter-spacing: 1.25px;
+  /* color: hsl(229, 30%, 26%); */
 }
 
 .projectDescription {
@@ -131,12 +136,14 @@ mat-drawer-container {
 .iDate, .pDate, .clientEmail {
   margin-bottom: 25px;
   margin-top: 8px;
+  color: var(--text);
+  letter-spacing: 1.25px;
 }
 
 .clientName {
   margin: 8px 0;
+  color: var(--text);
 }
-
 
 .bold {
   font-weight: bold;
@@ -144,7 +151,7 @@ mat-drawer-container {
 }
 
 .title {
-  color: gray;
+  color: var(--subText);
   font-size: 16px;
 }
 
@@ -152,7 +159,7 @@ mat-drawer-container {
   height: auto;
   width: 100%;
   border-radius: 5px 5px 0 0;
-  background-color: hsl(225, 100%, 98%);
+  background-color: var(--invoiceTotalSheetBg);
   display: flex;
   flex-direction: column;
   padding: 20px 20px 0 20px;
@@ -170,10 +177,11 @@ mat-drawer-container {
 .itemName, .subTotal {
   font-size: 18px;
   font-weight: bold;
-  color: black;
+  color: var(--text);
+  letter-spacing: 1.25px;
 }
 .itemQty {
-  color: gray;
+  color: var(--subText);
   margin-top: 5px;
 }
 
@@ -181,7 +189,7 @@ mat-drawer-container {
   width: 100%;
   height: 80px;
   border-radius: 0 0 5px 5px;
-  background-color: hsl(232, 18%, 24%); /*possibly use this color or lighter instead for header etc*/
+  background-color: hsl(232, 18%, 24%); 
   color: white;
   display: flex;
   justify-content: space-between;
@@ -191,6 +199,7 @@ mat-drawer-container {
 .totalPrice {
   font-size: 25px;
   font-weight: bold;
+  letter-spacing: 1.25px;
 }
 
 .footer {

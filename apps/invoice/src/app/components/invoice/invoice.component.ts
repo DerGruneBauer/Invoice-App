@@ -19,6 +19,18 @@ export class InvoiceComponent implements OnInit {
     this.getUserInvoices();
   }
 
+  formatCode(id: number){
+    let codeFormat = "";
+    if(id > 9) {
+      codeFormat = "RT0";
+    } else if (id < 10){
+      codeFormat = "RT00";
+    } else {
+      codeFormat = "RT";
+    }
+    return codeFormat;
+  }
+
   get invoiceDetails() {
     return this.invoiceService.returnInvoiceDetails();
   }
