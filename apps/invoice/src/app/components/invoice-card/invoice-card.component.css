@@ -2,7 +2,7 @@
   height: 130px;
   padding: 20px;
   margin: 20px auto;
-  background-color: white;
+  background-color: var(--invoiceCardBg);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -17,43 +17,46 @@
 .codeDateAmount{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .clientStatus{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  align-items: flex-end;
 }
 
 .hashtag {
-  color: gray; /*Needs to be toggle icon color in dark theme*/
-  font-size: 16px;
+  color: var(--subText); 
+  font-size: 1em;
   font-weight: bold;
   display: flex;
   margin-bottom: 23px;
- 
 }
 .code {
-  color: black;
-  font-size: 16px;
+  color: var(--text);
+  font-size: 1em;
 }
 
 .date {
-  color: gray;
-  font-size: 15px;
+  color: var(--subText);
+  font-size: 1em;
   margin-bottom: 5px;
 }
 
 .amount {
-  color: black;
+  color: var(--text);
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.25em;
+  margin-bottom: 30px;
 }
 
 .client {
-  color: gray;
-  font-size: 15px;
-  margin-bottom: 31px;
+  color: var(--subText);
+  font-size: 1em;
 }
 
 .statusDot {
@@ -72,17 +75,28 @@
   margin-left: 5px;
   font-size: 15px;
 }
+.statusDraft, .statusPaid, .statusPending {
+  letter-spacing: 1px;
+}
 .statusPaid {
-  background: rgba(218, 254, 220, 0.5);
-  color: #2ac237;
+  background: var(--paidIcon);
+  color: #2ac28f;
 }
 .statusPending {
-  background: rgba(254, 236, 218, 0.5);
+  background: var(--pendingIcon);
   color: #fc9c39;
 }
 .statusDraft {
-  background: rgba(233, 232, 232, 0.5);
-  color: gray;
+  background: var(--draftIcon);
+  color: var(--statusDraftWord);
+}
+
+.arrow {
+  color: var(--invoiceCarat);
+}
+
+.amount, .hashtag, .code, .status {
+  letter-spacing: 1.25px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -95,22 +109,36 @@
   }
   .codeDateAmount{
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 55%;
+    justify-content: space-between;
+    width: 60%;
     align-items: center;
+  }
+  .dateName{
+    display: flex;
+    align-items: center;
+    width: 75%;
   }
   
   .clientStatus{
     flex-direction: row;
-    width: 45%;
-    justify-content: space-between;
+    width: 40%;
+    justify-content: flex-end;
+    align-items: center;
     padding-right: 30px;
+  }
+  .amount{
+    margin: 0 25px 0 0;
+  }
+
+  .hashtag {
+    margin: 0 0 0 20px;
+  }
+  .date {
+    margin: 0 20px 0 0;
   }
 
   .client,
-  .status,
-  .date,
-  .hashtag {
+  .status {
     margin: 0;
   }
 
@@ -119,12 +147,28 @@
     width: 15px;
     margin-left: -15px;
   }
+ 
 }
+@media only screen and (min-width: 1024px) {
+  .date{
+    margin: 0 50px 0 40px;
+  }
+  .amount{
+    margin-right: 55px;
+  }
+  .hashtag {
+    margin: 0 0 0 55px;
+  }
+  .statusDot {
+    margin-right: 25px;
+  }
+}
+
 
 @media only screen and (min-width: 1440px) {
   .wrapper:hover {
       cursor: pointer;
-      box-shadow: 0px 6px 24px -7px rgba(48,47,48,0.1);
+      box-shadow: 0px 6px 24px -7px var(--invoiceBoxShadow);
   }
   .wrapper svg {
     margin-left: -45px;
@@ -132,5 +176,21 @@
    
   .clientStatus{
     padding-right: 45px;
+  }
+}
+
+@media only screen and (min-width: 1750px) {
+  .statusDot {
+    margin-right: 55px;
+  }
+  .client{
+    margin-left: 55px;
+  }
+
+  .amount{
+    margin-right: 95px;
+  }
+  .hashtag, .date, .client {
+    font-size: 1.25em;
   }
 }

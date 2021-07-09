@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@der-grune-bauer/api-interfaces';
-import { HeaderComponent } from '../app/components/header/header.component';
+import { InvoiceService } from './invoice.service';
 
 @Component({
   selector: 'der-grune-bauer-root',
@@ -9,6 +8,8 @@ import { HeaderComponent } from '../app/components/header/header.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  // hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+ 
+  constructor(private invoiceService: InvoiceService) {}
+
+
 }

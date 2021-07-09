@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { InvoiceService } from '../../invoice.service';
 
 @Component({
   selector: 'der-grune-bauer-header',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  darkTheme = new FormControl(false);
+
+  constructor(private invoiceService: InvoiceService) {
+
+    this.darkTheme.valueChanges.subscribe(value => {
+      if (value) {
+        this.invoiceService.toggleDark();
+      } else {
+        this.invoiceService.toggleLight();
+      }
+    })
+  }
 
   ngOnInit(): void {
   }
-
+  
 }

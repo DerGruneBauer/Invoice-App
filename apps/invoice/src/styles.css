@@ -1,3 +1,16 @@
+:root {
+    --text: black;
+  --invoiceCardBg: white;
+  --subText: grey;
+  --pageBg: #fafafa;
+  --paidIcon: rgba(218, 254, 220, 0.5);
+  --pendingIcon: rgba(254, 236, 218, 0.5);
+  --draftIcon: rgba(233, 232, 232, 0.5);
+  --invoiceCarat: black;
+  --statusDraftWord: gray;
+  --invoiceBoxShadow: rgba(48,47,48,0.1);
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;

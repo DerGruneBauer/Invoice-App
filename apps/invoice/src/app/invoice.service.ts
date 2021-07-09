@@ -1,6 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+export const darkTheme = {
+  'text': 'white',
+  'invoiceCardBg': 'hsl(228, 28%, 20%)',
+  'subText': 'hsl(228, 34%, 66%)',
+  'pageBg': 'hsl(232, 19%, 15%)',
+  'paidIcon' : 'rgba(101, 247, 138, 0.11)',
+  'pendingIcon' : 'rgba(253, 137, 42, 0.15)',
+  'draftIcon': 'rgba(134, 134, 134, 0.233)',
+  'invoiceCarat': '#9b6dff',
+  'statusDraftWord': 'rgb(216, 216, 216)',
+  'invoiceBoxShadow': 'black',
+};
+
+export const lightTheme = {
+  'text': 'black',
+  'invoiceCardBg': 'white',
+  'subText': 'gray',
+  'pageBg' : '#fafafa',
+  'paidIcon' : 'rgba(218, 254, 220, 0.5)',
+  'pendingIcon' : 'rgba(254, 236, 218, 0.5)',
+  'draftIcon': 'rgba(233, 232, 232, 0.5)',
+  'invoiceCarat': 'black',
+  'statusDraftWord': 'gray',
+  'invoiceBoxShadow': 'rgba(48,47,48,0.1)',
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -45,11 +70,28 @@ export class InvoiceService {
   }
 
   updateInvoicePaid(id: number){
-    return this.httpClient.put<any>(`${this.invoiceUrl}/invoices/${id}/paid`, { id });
+    return this.httpClient.put(`${this.invoiceUrl}/${id}/paid`, {responseType: 'json'});
+  }
+
+  updateInvoicePending(id: number){
+    return this.httpClient.put(`${this.invoiceUrl}/${id}/pending`, {responseType: 'json'});
   }
 
 returnInvoiceDetails() {
   return this.invoiceDetails;
+}
+
+//Theme/Color Toggling
+toggleDark() {
+  this.setTheme(darkTheme);
+}
+toggleLight() {
+  this.setTheme(lightTheme);
+}
+
+private setTheme(theme: {}) {
+  Object.keys(theme).forEach(key =>
+    document.documentElement.style.setProperty(`--${key}`, theme[key]))
 }
 
 

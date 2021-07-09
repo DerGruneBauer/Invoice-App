@@ -34,18 +34,8 @@ db.get('/users/:id/invoices', async (req, res,) => {
     res.json(account.rows);
 })
 
-//PUT Requests
-//Change invoice from pending to paid 
-db.put('/invoices/:invoiceId/paid', async(req, res) => {
-    const account = await pool.query(
-        `UPDATE invoices
-         SET status = 'paid',
-         payment_date = NOW()
-         WHERE id = ${req.params.invoiceId}`
-    );
-    res.json(account.rows);
-})
-
+//POST REQUEST
+//Add new invoice
 db.post('/invoices/', async(req,res) => {
     const { items } = req.body;
      const { user_id } = req.body;
@@ -111,6 +101,28 @@ db.post('/invoices/', async(req,res) => {
     res.json(account.rows);
 })
 
+//PUT Requests
+//Change invoice from pending to paid 
+db.put('/invoices/:invoiceId/paid', async(req, res) => {
+    const account = await pool.query(
+        `UPDATE invoices
+         SET status = 'Paid',
+         payment_date = NOW()
+         WHERE id = ${req.params.invoiceId}`
+    );
+    res.json(account.rows);
+})
+db.put('/invoices/:invoiceId/pending', async(req, res) => {
+    const account = await pool.query(
+        `UPDATE invoices
+         SET status = 'Pending',
+         payment_date = ''
+         WHERE id = ${req.params.invoiceId}`
+    );
+    res.json(account.rows);
+})
+
+//Change info from edit form
 db.put('/invoices/:invoiceId', async(req,res) => {
     const { items } = req.body;
      const { user_id } = req.body;
@@ -130,7 +142,6 @@ db.put('/invoices/:invoiceId', async(req,res) => {
      const { user_city} = req.body;
      const { user_postcode} = req.body;
      const { user_country} = req.body;
-     const { invoiceId } = req.body;
     const account = await pool.query(
         `UPDATE invoices
             set items = $1, 
@@ -151,8 +162,8 @@ db.put('/invoices/:invoiceId', async(req,res) => {
             set billfrom_city= $16,
             set billfrom_postcode= $17,
             set billfrom_country= $18
-            WHERE invoiceId = $19
-        `, [items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country, invoiceId]
+            WHERE invoiceId = ${req.params.invoiceId}
+        `, [items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country]
     );
     res.json(account.rows);
 })

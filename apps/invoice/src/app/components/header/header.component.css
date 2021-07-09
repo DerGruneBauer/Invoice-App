@@ -1,5 +1,6 @@
 .wrapper {
-  background-color: hsl(232, 19%, 15%);
+  /* background-color: hsl(232, 19%, 15%); */
+  background-color: hsl(228, 28%, 20%);
   width: 100vw;
   height: 10vh;
   display: flex;
@@ -32,6 +33,9 @@
 
 .toggleAndUser {
   display: flex;
+}
+input {
+  display: none;
 }
 
 .toggleTheme {

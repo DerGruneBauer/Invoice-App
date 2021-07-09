@@ -6,27 +6,29 @@
 >
   <div class="wrapper">
     <div class="codeDateAmount">
-    <div class="hashtag">
-      #
-      <div class="code">{{formatCode(invoice.id)}}{{ invoice.id }}</div>
+      <div class="hashtag">
+        #
+        <div class="code">{{ formatCode(invoice.id) }}{{ invoice.id }}</div>
+      </div>
+      <div class="dateName">
+        <div class="date">Due {{ invoice.due_date | date }}</div>
+        <div class="client">{{ invoice.client_name }}</div>
+      </div>
     </div>
-    <div class="date">Due {{ invoice.due_date  | date}}</div>
-    <div class="amount">{{ invoice.amount_due | currency}}</div>
-  </div>
-  <div class="clientStatus">
-    <div class="client">{{ invoice.client_name }}</div>
-    <div
-      class="statusDot"
-      [ngClass]="{
-        statusDraft: invoice.status == 'Draft',
-        statusPaid: invoice.status == 'Paid',
-        statusPending: invoice.status == 'Pending'
-      }"
-    >
-      • 
-      <div class="status">{{ invoice.status }}</div>
+    <div class="clientStatus">
+      <div class="amount">{{ invoice.amount_due | currency }}</div>
+      <div
+        class="statusDot"
+        [ngClass]="{
+          statusDraft: invoice.status == 'Draft',
+          statusPaid: invoice.status == 'Paid',
+          statusPending: invoice.status == 'Pending'
+        }"
+      >
+        •
+        <div class="status">{{ invoice.status }}</div>
+      </div>
     </div>
-  </div>
     <svg
       *ngIf="screenWidth >= 768"
       xmlns="http://www.w3.org/2000/svg"
