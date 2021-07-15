@@ -35,7 +35,6 @@ export class InvoiceComponent implements OnInit {
     return this.invoiceService.returnInvoiceDetails();
   }
 
-
   closeDrawer(){
     this.showDrawer = false;
   }
@@ -47,11 +46,8 @@ export class InvoiceComponent implements OnInit {
   }
 
   markInvoicePaid(id: number){
-    console.log("hello");
     this.invoiceService.updateInvoicePaid(id).subscribe((data) => {
       console.log(data);
-      console.log(id);
     })
   }
-
 }

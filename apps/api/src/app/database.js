@@ -7,6 +7,9 @@ const pool = require("./connection");
 db.get('/', (req, res) => {
   res.send({data: 'hello'});
 })
+// db.get('/invoices', (req, res) => {
+//     res.send({data: 'hello invoices'});
+//   })
 
 //Get all users
 db.get('/users', async (req, res) => {
@@ -123,9 +126,8 @@ db.put('/invoices/:invoiceId/pending', async(req, res) => {
 })
 
 //Change info from edit form
-db.put('/invoices/:invoiceId', async(req,res) => {
+db.put('/invoices/:invoiceId/edit', async(req,res) => {
     const { items } = req.body;
-     const { user_id } = req.body;
      const { due_date } = req.body;
      const { amount_due } = req.body;
      const { status } = req.body;
@@ -144,26 +146,25 @@ db.put('/invoices/:invoiceId', async(req,res) => {
      const { user_country} = req.body;
     const account = await pool.query(
         `UPDATE invoices
-            set items = $1, 
-            set user_id = $2,
-            set due_date = $3, 
-            set amount_due= $4, 
-            set status= $5, 
-            set payment_date= $6, 
-            set payment_terms= $7, 
-            set project_description= $8, 
-            set client_name= $9, 
-            set client_email= $10, 
-            set client_address= $11, 
-            set client_city= $12, 
-            set client_postcode= $13, 
-            set client_country= $14,
-            set billfrom_address= $15,
-            set billfrom_city= $16,
-            set billfrom_postcode= $17,
-            set billfrom_country= $18
-            WHERE invoiceId = ${req.params.invoiceId}
-        `, [items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country]
+            SET items = $1, 
+            due_date = $2, 
+            amount_due= $3, 
+            status= $4, 
+            payment_date= $5, 
+            payment_terms= $6, 
+            project_description= $7, 
+            client_name= $8, 
+            client_email= $9, 
+            client_address= $10, 
+            client_city= $11, 
+            client_postcode= $12, 
+            client_country= $13,
+            billfrom_address= $14,
+            billfrom_city= $15,
+            billfrom_postcode= $16,
+            billfrom_country= $17
+            WHERE id = ${req.params.invoiceId}
+        `, [items, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country]
     );
     res.json(account.rows);
 })
