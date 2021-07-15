@@ -33,7 +33,9 @@
 
 .toggleAndUser {
   display: flex;
+  align-items: center;
 }
+
 input {
   display: none;
 }
@@ -79,7 +81,6 @@ input {
 
   .toggleAndUser {
     flex-direction: column;
-    align-items: center;
   }
 
   .toggleTheme {

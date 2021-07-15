@@ -64,7 +64,7 @@ mat-drawer-container {
 
 .statusTitle {
   font-weight: bold;
-  color: gray;
+  color: var(--subText);
 }
 .statusDot {
   height: 40px;
@@ -112,7 +112,6 @@ mat-drawer-container {
 .code {
   color: var(--text);
   letter-spacing: 1.25px;
-  /* color: hsl(229, 30%, 26%); */
 }
 
 .projectDescription {
@@ -133,7 +132,9 @@ mat-drawer-container {
   margin-bottom: 15px;
 }
 
-.iDate, .pDate, .clientEmail {
+.iDate,
+.pDate,
+.clientEmail {
   margin-bottom: 25px;
   margin-top: 8px;
   color: var(--text);
@@ -174,7 +175,8 @@ mat-drawer-container {
   align-items: center;
 }
 
-.itemName, .subTotal {
+.itemName,
+.subTotal {
   font-size: 18px;
   font-weight: bold;
   color: var(--text);
@@ -189,7 +191,7 @@ mat-drawer-container {
   width: 100%;
   height: 80px;
   border-radius: 0 0 5px 5px;
-  background-color: hsl(232, 18%, 24%); 
+  background-color: hsl(232, 18%, 24%);
   color: white;
   display: flex;
   justify-content: space-between;
@@ -210,7 +212,9 @@ mat-drawer-container {
   align-items: center;
 }
 
-.editButton, .deleteButton, .statusChangeButton {
+.editButton,
+.deleteButton,
+.statusChangeButton {
   height: 55px;
   width: auto;
   padding: 15px 25px;
@@ -221,9 +225,9 @@ mat-drawer-container {
 }
 
 .editButton {
-  color: black;
-  border: solid lightgray 2px;
-  background-color: hsl(225, 100%, 98%);
+  color: var(--text);
+  background-color: var(--invoiceTotalSheetBg);
+  border: var(--inputBorder) solid 2px;
 }
 .deleteButton {
   color: white;
@@ -232,6 +236,24 @@ mat-drawer-container {
 .statusChangeButton {
   color: white;
   background-color: #9b6dff;
+}
+.editButton:hover {
+  background-color: var(--editInvoiceButtonHover);
+  /* color: rgb(239, 241, 248); */
+}
+.deleteButton:hover {
+  background-color: #c92727;
+}
+.statusChangeButton:hover {
+  background-color: #8f64ec;
+}
+
+.backButton:hover,
+.editButton:hover,
+.deleteButton:hover,
+.statusChangeButton:hover {
+  cursor: pointer;
+  outline: none;
 }
 
 @media only screen and (min-width: 768px) {
@@ -260,7 +282,9 @@ mat-drawer-container {
     justify-content: space-between;
   }
 
-  .editButton, .deleteButton, .statusChangeButton {
+  .editButton,
+  .deleteButton,
+  .statusChangeButton {
     height: 45px;
     padding: 15px 30px;
     border-radius: 30px;
@@ -296,7 +320,6 @@ mat-drawer-container {
 }
 
 @media only screen and (min-width: 1440px) {
-
   .wrapper {
     width: 100vw;
     height: 100vh;
@@ -305,7 +328,7 @@ mat-drawer-container {
 
   .innerWrapper {
     padding: 30px 240px 30px 300px;
-  } 
+  }
   .spacerDiv {
     height: 100%;
     width: 7.5vw;
@@ -325,11 +348,6 @@ mat-drawer-container {
     width: 45%;
   }
 
-  .backButton:hover, .editButton:hover, .deleteButton:hover, .statusChangeButton:hover {
-    cursor: pointer;
-    outline: none;
-  }
-
   .svgDiv {
     width: 110px;
     height: 30px;
@@ -338,20 +356,9 @@ mat-drawer-container {
     z-index: 100;
     display: flex;
     align-items: center;
-    transition: left .5s;
+    transition: left 0.5s;
   }
   .svgDiv:hover {
     left: 260px;
   }
-
-  .editButton:hover {
-    background-color: hsl(221, 50%, 94%);;
-  }
-  .deleteButton:hover {
-    background-color: #c92727;
-  }
-  .statusChangeButton:hover {
-    background-color: #8f64ec;
-  }
 }
-

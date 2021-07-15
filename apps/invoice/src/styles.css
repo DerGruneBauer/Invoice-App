@@ -10,6 +10,9 @@
   --statusDraftWord: gray;
   --invoiceBoxShadow: rgba(48,47,48,0.1);
   --invoiceTotalSheetBg: hsl(225, 100%, 98%);
+  --inputBorder: lightGray;
+  --buttonHover: hsl(224, 65%, 96.75%);
+  --editInvoiceButtonHover: rgb(236, 238, 247);
 }
 
 * {

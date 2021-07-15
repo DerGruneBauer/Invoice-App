@@ -1,7 +1,7 @@
 .wrapper {
     height: 100%;
     width: 100vw;
-    background-color: hsl(225, 100%, 98%);
+    background-color: var(--pageBg);
     padding: 30px 20px;
     overflow-y: auto;
   }
@@ -9,6 +9,7 @@
   .title {
     font-size: 28px;
     font-weight: bold;
+    color: var(--text);
   }
   
   .buttons {
@@ -18,7 +19,7 @@
     margin-top: 10px;
   }
   
-  .buttons div {
+  /* .buttons div {
     height: 40px;
     width: auto;
     padding: 15px 25px;
@@ -32,12 +33,12 @@
     color: black;
     background-color: white;
     border: lightgray solid 2px;
-    /* background-color: hsl(225, 100%, 98%); */
+    background-color: hsl(225, 100%, 98%); 
   }
   .saveButton {
     color: white;
     background-color: #9b6dff;
-  }
+  } */
   
   @media only screen and (min-width: 768px) {
   .wrapper {

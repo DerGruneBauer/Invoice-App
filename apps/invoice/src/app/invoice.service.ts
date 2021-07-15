@@ -13,6 +13,9 @@ export const darkTheme = {
   'statusDraftWord': 'rgb(216, 216, 216)',
   'invoiceBoxShadow': 'black',
   'invoiceTotalSheetBg': 'hsl(229, 30%, 26%)',
+  'inputBorder': 'none',
+  'buttonHover': 'hsl(229, 32%, 26%)',
+  'editInvoiceButtonHover': 'hsl(228, 30%, 30%)',
 };
 
 export const lightTheme = {
@@ -26,7 +29,10 @@ export const lightTheme = {
   'invoiceCarat': 'black',
   'statusDraftWord': 'gray',
   'invoiceBoxShadow': 'rgba(48,47,48,0.1)',
-  'invoiceTotalSheetBg': 'hsl(225, 100%, 98%)'
+  'invoiceTotalSheetBg': 'hsl(225, 100%, 98%)',
+  'inputBorder': 'lightGray',
+  'buttonHover': 'hsl(224, 65%, 96.75%)',
+  'editInvoiceButtonHover': 'rgb(236, 238, 247)',
 };
 @Injectable({
   providedIn: 'root'
