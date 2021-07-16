@@ -7,15 +7,15 @@ export const darkTheme = {
   'subText': 'hsl(228, 34%, 66%)',
   'pageBg': 'hsl(232, 19%, 15%)',
   'paidIcon' : 'rgba(101, 247, 138, 0.11)',
-  'pendingIcon' : 'rgba(253, 137, 42, 0.15)',
-  'draftIcon': 'rgba(134, 134, 134, 0.233)',
+  'pendingIcon' : 'rgba(134, 134, 134, 0.233)',
   'invoiceCarat': '#9b6dff',
-  'statusDraftWord': 'rgb(216, 216, 216)',
+  'statusPendingWord': 'rgb(216, 216, 216)',
   'invoiceBoxShadow': 'black',
   'invoiceTotalSheetBg': 'hsl(229, 30%, 26%)',
   'inputBorder': 'none',
   'buttonHover': 'hsl(229, 32%, 26%)',
   'editInvoiceButtonHover': 'hsl(228, 30%, 30%)',
+  'overdueIcon': 'rgba(247, 101, 101, 0.11)',
 };
 
 export const lightTheme = {
@@ -24,15 +24,15 @@ export const lightTheme = {
   'subText': 'gray',
   'pageBg' : '#fafafa',
   'paidIcon' : 'rgba(218, 254, 220, 0.5)',
-  'pendingIcon' : 'rgba(254, 236, 218, 0.5)',
-  'draftIcon': 'rgba(233, 232, 232, 0.5)',
+  'pendingIcon' : 'rgba(233, 232, 232, 0.5)',
   'invoiceCarat': 'black',
-  'statusDraftWord': 'gray',
+  'statusPendingWord': 'gray',
   'invoiceBoxShadow': 'rgba(48,47,48,0.1)',
   'invoiceTotalSheetBg': 'hsl(225, 100%, 98%)',
   'inputBorder': 'lightGray',
   'buttonHover': 'hsl(224, 65%, 96.75%)',
   'editInvoiceButtonHover': 'rgb(236, 238, 247)',
+  'overdueIcon': 'rgba(254, 218, 218, 0.5)',
 };
 @Injectable({
   providedIn: 'root'
@@ -47,6 +47,7 @@ export class InvoiceService {
   apiUrl: string = 'http://localhost:3333/users';
   invoiceUrl: string = 'http://localhost:3333/invoices';
 
+  //Get Requests
   getUser(id: number){
     return this.httpClient.get(`${this.apiUrl}/${id}`, {responseType: 'json'})
   }
@@ -55,8 +56,22 @@ export class InvoiceService {
     return this.httpClient.get(`${this.apiUrl}/${id}/invoices`, {responseType: 'json'})
   }
 
+  //Post Requests
   postNewInvoice(items: any[], user_id: number, due_date: Date, amount_due: number, status: string, payment_date: Date, payment_terms: string, project_description: string, client_name: string, client_email: string, client_address: string, client_city: string, client_postcode: number, client_country: string, user_address:string, user_city: string, user_postcode: number, user_country:string){
     return this.httpClient.post(`${this.invoiceUrl}`, { items, user_id, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country })
+  }
+
+  //Put Requests
+  updateInvoice(items: any[], due_date: Date, amount_due: number, payment_date: Date, payment_terms: string, project_description: string, client_name: string, client_email: string, client_address: string, client_city: string, client_postcode: number, client_country: string, user_address:string, user_city: string, user_postcode: number, user_country:string, invoiceId:number,){
+    return this.httpClient.put(`${this.invoiceUrl}/${invoiceId}/edit`, { items, due_date, amount_due, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country}, {responseType: 'json'})
+  }
+
+  updateInvoicePaid(id: number){
+    return this.httpClient.put(`${this.invoiceUrl}/${id}/paid`, {responseType: 'json'});
+  }
+
+  updateInvoicePending(id: number){
+    return this.httpClient.put(`${this.invoiceUrl}/${id}/pending`, {responseType: 'json'});
   }
 
   getInvoiceNumber() {
@@ -73,18 +88,6 @@ export class InvoiceService {
         }
   }
 
-  updateInvoice(items: any[], due_date: Date, amount_due: number, status: string, payment_date: Date, payment_terms: string, project_description: string, client_name: string, client_email: string, client_address: string, client_city: string, client_postcode: number, client_country: string, user_address:string, user_city: string, user_postcode: number, user_country:string, invoiceId:number,){
-    return this.httpClient.put(`${this.invoiceUrl}/${invoiceId}/edit`, { items, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country}, {responseType: 'json'})
-  }
-
-  updateInvoicePaid(id: number){
-    return this.httpClient.put(`${this.invoiceUrl}/${id}/paid`, {responseType: 'json'});
-  }
-
-  updateInvoicePending(id: number){
-    return this.httpClient.put(`${this.invoiceUrl}/${id}/pending`, {responseType: 'json'});
-  }
-
 returnInvoiceDetails() {
   return this.invoiceDetails;
 }
@@ -96,11 +99,8 @@ toggleDark() {
 toggleLight() {
   this.setTheme(lightTheme);
 }
-
 private setTheme(theme: {}) {
   Object.keys(theme).forEach(key =>
     document.documentElement.style.setProperty(`--${key}`, theme[key]))
 }
-
-
 }

@@ -20,13 +20,13 @@
       <div
         class="statusDot"
         [ngClass]="{
-          statusDraft: invoice.status == 'Draft',
+          statusOverdue: invoice.status == 'Overdue',
           statusPaid: invoice.status == 'Paid',
           statusPending: invoice.status == 'Pending'
         }"
       >
         •
-        <div class="status">{{ invoice.status }}</div>
+        <div class="status">&nbsp;{{ invoice.status }}</div>
       </div>
     </div>
     <svg

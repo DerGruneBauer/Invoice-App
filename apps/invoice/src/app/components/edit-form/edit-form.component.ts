@@ -79,7 +79,6 @@ export class EditFormComponent implements OnInit {
 
   updateInvoice(userAddress, userCity, userPostcode, userCountry, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, dueDate, paymentTerms, projectDescription, invoiceId) {
     let itemArray = [];
-    console.log(invoiceId);
     let amountDue: number = 0;
     for (let i = 0; i < this.items.length; i++) {
       let itemPriceX = document.getElementsByName('price')[i] as HTMLInputElement;
@@ -91,9 +90,7 @@ export class EditFormComponent implements OnInit {
       itemArray.push([itemName, parseFloat(quantity), parseFloat(price)]);
       amountDue += parseFloat(quantity)*parseFloat(price);
     }
-    this.invoiceService.updateInvoice(itemArray, dueDate, amountDue, "Pending", null, paymentTerms, projectDescription, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, userAddress, userCity, userPostcode, userCountry, invoiceId).subscribe((data) => {
-      console.log(data);
-      console.log("hello bby");
+    this.invoiceService.updateInvoice(itemArray, dueDate, amountDue, null, paymentTerms, projectDescription, clientName, clientEmail, clientAddress, clientCity, clientPostcode, clientCountry, userAddress, userCity, userPostcode, userCountry, invoiceId).subscribe((data) => {
     })
   }
 

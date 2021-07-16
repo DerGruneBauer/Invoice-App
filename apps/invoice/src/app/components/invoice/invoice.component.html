@@ -31,19 +31,19 @@
     <div
       class="statusDot"
       [ngClass]="{
-        statusDraft: invoiceDetails[0].status == 'Draft',
+        statusOverdue: invoiceDetails[0].status == 'Overdue',
         statusPaid: invoiceDetails[0].status == 'Paid',
         statusPending: invoiceDetails[0].status == 'Pending'
       }"
     >
       •
-      <div class="status">{{ invoiceDetails[0].status }}</div>
+      <div class="status">&nbsp;{{ invoiceDetails[0].status }}</div>
     </div>
 </div>
     <div class="buttons" *ngIf="screenWidth >= 768">
         <div class="editButton" (click)="showDrawer = true" (click)="drawer.toggle()">Edit</div>
         <div class="deleteButton">Delete</div>
-        <div class="statusChangeButton" (click)="markInvoicePaid(i)" routerLink="/Dashboard">Mark As Paid</div>
+        <div class="statusChangeButton" (click)="updateInvoiceStatus(invoiceDetails[0].id)" routerLink="/Dashboard">{{this.statusButtonText}}</div>
     </div>
   </div>
 
@@ -118,7 +118,7 @@
 <div class="footer" *ngIf="screenWidth < 768">
     <div class="editButton" (click)="showDrawer = true" (click)="drawer.toggle()">Edit</div>
     <div class="deleteButton">Delete</div>
-    <div class="statusChangeButton" (click)="markInvoicePaid(i)" routerLink="/Dashboard">Mark As Paid</div>
+    <div class="statusChangeButton" (click)="updateInvoiceStatus(invoiceDetails[0].id)" routerLink="/Dashboard">Mark As Paid</div>
   </div>
 </mat-drawer-container>
 </div>

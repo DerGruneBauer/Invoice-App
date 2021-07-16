@@ -12,11 +12,13 @@ export class InvoiceComponent implements OnInit {
   screenWidth: any = window.screen.width;
   showDrawer: boolean = false;
   invoices = {};
+  statusButtonText = "";
   
   constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
     this.getUserInvoices();
+    this.alterStatusButtonText();
   }
 
   formatCode(id: number){
@@ -45,9 +47,26 @@ export class InvoiceComponent implements OnInit {
     })
   }
 
-  markInvoicePaid(id: number){
-    this.invoiceService.updateInvoicePaid(id).subscribe((data) => {
-      console.log(data);
-    })
+  updateInvoiceStatus(id: number){
+    if(this.invoiceDetails[0].status == "Pending") {
+      this.invoiceService.updateInvoicePaid(id).subscribe((data) => {
+        console.log(data);
+      })
+    } else if (this.invoiceDetails[0].status == "Paid") {
+      this.invoiceService.updateInvoicePending(id).subscribe((data) => {
+        console.log(data);
+      })
+    }
+    else {
+      console.log("Did not hit paid or pending");
+    }
+  }
+
+  alterStatusButtonText(){
+    if(this.invoiceDetails[0].status == "Pending") {
+      this.statusButtonText = "Mark As Paid";
+    } else if (this.invoiceDetails[0].status == "Paid") {
+      this.statusButtonText = "Mark As Pending";
+    }
   }
 }

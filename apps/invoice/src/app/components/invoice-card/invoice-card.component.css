@@ -84,11 +84,11 @@
 }
 .statusPending {
   background: var(--pendingIcon);
-  color: #fc9c39;
+  color: var(--statusPendingWord);
 }
-.statusDraft {
-  background: var(--draftIcon);
-  color: var(--statusDraftWord);
+.statusOverdue {
+  background: var(--overdueIcon);
+  color: #ff5353
 }
 
 .arrow {

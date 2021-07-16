@@ -2,14 +2,10 @@ const express = require('express');
 const db = express.Router();
 const pool = require("./connection");
 
-//DB endpoints//
-//GET Requests
+//GET REQUESTS
 db.get('/', (req, res) => {
   res.send({data: 'hello'});
 })
-// db.get('/invoices', (req, res) => {
-//     res.send({data: 'hello invoices'});
-//   })
 
 //Get all users
 db.get('/users', async (req, res) => {
@@ -29,7 +25,7 @@ db.get('/users/:id', async (req, res) => {
 })
 
 //Get all invoices from certain user
-db.get('/users/:id/invoices', async (req, res,) => {
+db.get('/users/:id/invoices', async (req, res) => {
     const account = await pool.query(
         `SELECT * FROM invoices
         WHERE user_id=${req.params.id}`
@@ -37,7 +33,8 @@ db.get('/users/:id/invoices', async (req, res,) => {
     res.json(account.rows);
 })
 
-//POST REQUEST
+
+//POST REQUESTS
 //Add new invoice
 db.post('/invoices/', async(req,res) => {
     const { items } = req.body;
@@ -104,8 +101,9 @@ db.post('/invoices/', async(req,res) => {
     res.json(account.rows);
 })
 
-//PUT Requests
-//Change invoice from pending to paid 
+
+//PUT REQUESTS
+//Update invoice status from pending to paid 
 db.put('/invoices/:invoiceId/paid', async(req, res) => {
     const account = await pool.query(
         `UPDATE invoices
@@ -115,22 +113,23 @@ db.put('/invoices/:invoiceId/paid', async(req, res) => {
     );
     res.json(account.rows);
 })
+
+//Update invoice status from paid to pending
 db.put('/invoices/:invoiceId/pending', async(req, res) => {
     const account = await pool.query(
         `UPDATE invoices
          SET status = 'Pending',
-         payment_date = ''
+         payment_date = null
          WHERE id = ${req.params.invoiceId}`
     );
     res.json(account.rows);
 })
 
-//Change info from edit form
+//Update existing invoice's information
 db.put('/invoices/:invoiceId/edit', async(req,res) => {
     const { items } = req.body;
      const { due_date } = req.body;
      const { amount_due } = req.body;
-     const { status } = req.body;
      const { payment_date } = req.body;
      const { payment_terms } = req.body;
      const { project_description } = req.body;
@@ -149,22 +148,21 @@ db.put('/invoices/:invoiceId/edit', async(req,res) => {
             SET items = $1, 
             due_date = $2, 
             amount_due= $3, 
-            status= $4, 
-            payment_date= $5, 
-            payment_terms= $6, 
-            project_description= $7, 
-            client_name= $8, 
-            client_email= $9, 
-            client_address= $10, 
-            client_city= $11, 
-            client_postcode= $12, 
-            client_country= $13,
-            billfrom_address= $14,
-            billfrom_city= $15,
-            billfrom_postcode= $16,
-            billfrom_country= $17
+            payment_date= $4, 
+            payment_terms= $5, 
+            project_description= $6, 
+            client_name= $7, 
+            client_email= $8, 
+            client_address= $9, 
+            client_city= $10, 
+            client_postcode= $11, 
+            client_country= $12,
+            billfrom_address= $13,
+            billfrom_city= $14,
+            billfrom_postcode= $15,
+            billfrom_country= $16
             WHERE id = ${req.params.invoiceId}
-        `, [items, due_date, amount_due, status, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country]
+        `, [items, due_date, amount_due, payment_date, payment_terms, project_description, client_name, client_email, client_address, client_city, client_postcode, client_country, user_address, user_city, user_postcode, user_country]
     );
     res.json(account.rows);
 })

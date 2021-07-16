@@ -86,11 +86,11 @@ mat-drawer-container {
 }
 .statusPending {
   background: var(--pendingIcon);
-  color: #fc9c39;
+  color: var(--statusPendingWord);
 }
-.statusDraft {
-  background: var(--draftIcon);
-  color: var(--statusDraftWord);
+.statusOverdue {
+  background: var(--overdueIcon);
+  color: #ff5353
 }
 
 .invoiceInfo {
@@ -261,6 +261,10 @@ mat-drawer-container {
     height: 90vh;
   }
 
+  .invoiceStatus {
+    padding: 30px;
+  }
+
   .navDrawer {
     width: 70%;
     position: fixed;
@@ -269,7 +273,7 @@ mat-drawer-container {
   }
 
   .totalStatus {
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 30%;
   }
   .statusTitle {
@@ -317,6 +321,9 @@ mat-drawer-container {
   .navDrawer {
     width: 50%;
   }
+  .totalStatus {
+    width: 20%;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -360,5 +367,8 @@ mat-drawer-container {
   }
   .svgDiv:hover {
     left: 260px;
+  }
+  .totalStatus {
+    width: 18%;
   }
 }
